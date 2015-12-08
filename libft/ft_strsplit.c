@@ -6,11 +6,12 @@
 /*   By: ppoinot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 03:47:34 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/07 03:29:32 by ppoinot          ###   ########.fr       */
+/*   Updated: 2015/12/08 02:38:27 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int		ft_compteur(char const *s, char c)
 {
@@ -50,10 +51,22 @@ char	**ft_strsplit(char const *s, char c)
 			s++;
 		while (s[i] != c && s[i])
 			i++;
-		if (i)
-			tab[n++] = ft_strcpy(ft_strnew(i), s);
+		if (i && s[i] == c)
+			tab[n++] = ft_strsub(s, 0, i--);
+		printf("i = %d\n", i);
 		s += i;
 	}
 	tab[n] = NULL;
 	return (tab);
+}
+
+int		main(void)
+{
+	char	**tab;
+
+	tab = ft_strsplit("**salut**bonjour*", '*');
+	printf("Tab[0] = %s\n", tab[0]);
+	printf("Tab[1] = %s\n", tab[1]);
+	printf("Resultat de ft_strcmp en tab[0] = %d\n", ft_strcmp(tab[0], "salut"));
+	return (0);
 }

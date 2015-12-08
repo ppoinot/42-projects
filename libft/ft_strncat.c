@@ -6,7 +6,7 @@
 /*   By: ppoinot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:06:51 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/05 02:11:58 by ppoinot          ###   ########.fr       */
+/*   Updated: 2015/12/08 01:54:15 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ char	*ft_strncat(char *dest, const char *src, size_t n)
 		*dest++ = *src++;
 	*dest = '\0';
 	return (dest_start);
-
 }
