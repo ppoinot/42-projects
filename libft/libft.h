@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppoinot <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 23:36:28 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/10 01:53:33 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/10 04:56:41 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/10 04:56:47 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+t_list				*ft_lstnew(void const *content, size_t content_size);
 
 #endif
