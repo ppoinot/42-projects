@@ -6,13 +6,13 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:52:05 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/14 03:56:24 by ppoinot          ###   ########.fr       */
+/*   Updated: 2015/12/14 04:32:57 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void ft_putunbr(unsigned int n)
+static void	ft_putunbr(unsigned int n)
 {
 	if (n > 9)
 		ft_putunbr(n / 10);
@@ -20,7 +20,7 @@ static void ft_putunbr(unsigned int n)
 	write(1, (unsigned char*)(&n), 1);
 }
 
-void	ft_putnbr(int n)
+void		ft_putnbr(int n)
 {
 	if (n < 0)
 	{
