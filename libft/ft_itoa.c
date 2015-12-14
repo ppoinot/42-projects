@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:49:03 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/10 04:49:05 by ppoinot          ###   ########.fr       */
+/*   Updated: 2015/12/14 03:25:24 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ char			*ft_itoa(int n)
 		u_nbr = -n;
 		len++;
 	}
-	str = (char*)malloc(sizeof(char) * len);
+	str = (char*)malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
+	str[len] = '\0';
 	str[--len] = u_nbr % 10 + '0';
 	while (u_nbr /= 10)
 		str[--len] = u_nbr % 10 + '0';

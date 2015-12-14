@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:49:54 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/10 04:49:55 by ppoinot          ###   ########.fr       */
+/*   Updated: 2015/12/14 00:15:23 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	char		*p_dst;
 	const char	*p_src = src;
 
-	if (!dst || !src)
-		return (NULL);
 	p_dst = dst;
 	while (n--)
 	{

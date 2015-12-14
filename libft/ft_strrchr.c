@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:55:37 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/10 04:55:38 by ppoinot          ###   ########.fr       */
+/*   Updated: 2015/12/14 04:21:22 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *last_occ;
+	int		i;
 
-	last_occ = NULL;
-	if (!s)
-		return (NULL);
-	while (*s)
+	i = 0;
+	if (s)
 	{
-		if (*s == (char)c)
-			last_occ = (char *)s;
-		s++;
+		while (s[i])
+			i++;
+		while (i >= 0)
+		{
+			if (s[i] == (unsigned char)c)
+				return ((char *)(s + i));
+			i--;
+		}
 	}
-	if (!*s && *s == (char)c)
-		last_occ = (char *)s;
-	return ((last_occ) ? last_occ : NULL);
+	else if (c == '\0')
+		return (((char *)s + ft_strlen(s)));
+	return (NULL);
 }

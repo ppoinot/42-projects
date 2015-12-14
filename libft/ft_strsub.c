@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:56:03 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/10 04:56:04 by ppoinot          ###   ########.fr       */
+/*   Updated: 2015/12/14 03:22:23 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	troncon = (char *)malloc(sizeof(char) * (len + 1));
 	if (!troncon)
 		return (NULL);
-	troncon[len + 1] = '\0';
+	troncon[len] = '\0';
 	while (s[start] && len--)
 		troncon[i++] = s[start++];
 	return (troncon);
