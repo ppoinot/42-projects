@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 04:57:12 by ppoinot           #+#    #+#              #
-#    Updated: 2015/12/11 03:43:21 by ppoinot          ###   ########.fr        #
+#    Updated: 2015/12/16 01:00:25 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,12 @@ SRC = ft_atoi.c \
 	  ft_lstiter.c \
 	  ft_lstmap.c \
 	  ft_lstnew.c \
-	  ft_lstpush.c
+	  ft_lstpush.c \
+	  ft_print_alphabet.c \
+	  ft_print_alphabet_fd.c \
+	  ft_print_reverse_alphabet.c \
+	  ft_print_reverse_alphabet_fd.c \
+	  ft_strrev.c
 
 all : $(NAME)
 
