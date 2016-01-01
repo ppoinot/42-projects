@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 04:53:18 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/14 03:18:06 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/16 00:27:39 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/16 01:00:28 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+char	*ft_strrev(char *str)
 {
-	if (!s1 && !s2)
-		return (0);
-	while (*s1)
+	char	c;
+	int		i;
+	int		len;
+
+	if (str)
 	{
-		if ((unsigned char)*s1 != (unsigned char)*s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
+		i = 0;
+		len = (ft_strlen(str) - 1);
+		while (i < len / 2)
+		{
+			c = str[i];
+			str[i] = str[len - i];
+			str[len - i] = c;
+			i++;
+		}
+		return (str);
 	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	return (NULL);
 }

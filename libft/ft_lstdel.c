@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 04:53:18 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/14 03:18:06 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/11 03:17:02 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/11 03:19:15 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	if (!s1 && !s2)
-		return (0);
-	while (*s1)
+	t_list		*list;
+	t_list		*next_lst;
+
+	if (!alst || !del)
+		return ;
+	list = *alst;
+	while (list)
 	{
-		if ((unsigned char)*s1 != (unsigned char)*s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
+		next_lst = list->next;
+		ft_lstdelone(&list, del);
+		list = next_lst;
 	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	*alst = NULL;
 }

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 04:53:18 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/14 03:18:06 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/16 00:19:52 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/16 00:22:30 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+void	ft_print_reverse_alphabet(void)
 {
-	if (!s1 && !s2)
-		return (0);
-	while (*s1)
-	{
-		if ((unsigned char)*s1 != (unsigned char)*s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
-	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	int		i;
+
+	i = 122;
+	while (i > 96)
+		ft_putchar(i--);
 }
