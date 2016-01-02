@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:47:41 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/10 04:47:42 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/01/02 14:22:36 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	if (n != 0)
-		s = ft_memset(s, 0, n);
+	s = ft_memset(s, 0, n);
 }
