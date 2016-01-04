@@ -6,17 +6,70 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:47:27 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/01/04 15:20:45 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/01/04 16:49:05 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define BUF_SIZE 16384
+#define BUF_SIZE 21
 
 #include "libft.h"
 
-static char		*add_tetris(int fd)
+int		check_tetris_content(char *str)
 {
-    int			oct_read;
+    int		dieze;
+    int		link;
+    int		i;
+    
+    dieze = 0;
+    link = 0;
+    i = 0;
+    while (str[i])
+    {
+        if (str[i] == '#')
+        {
+            dieze++;
+            if (str[i + 1] == '#')
+                link++;
+            if (i < 16 && str[i + 5] == '#')
+                link++;
+        }
+        i++;
+    }
+    printf("Dieze = %d\n", dieze);
+    printf("Link = %d\n", link);
+    if(dieze == 4 && link >= 3)
+        return (1);
+    return (0);
+}
+
+int		check_tetris_format(char *str);
+{
+	int		i;
+	int		;
+
+	i = 0
+	while (*str)
+	{
+		if ((i + 1) % 5)
+		{
+			if (str[i] != '\n)
+				return (0);
+		}
+		else if (i == 20)
+		{
+			if (str[i] && str[i] != '\n')
+				return (0);
+		}
+		else if (str[i] != '.' && str[i] != '#')
+			return (0);
+		i++;
+	}
+	return(check_tetris_content(str));
+}
+
+t_list		*add_tetris(int fd)
+{
+	int			oct_read;
 	char		*sample;
 
 	oct_read = read(fd, sample, BUF_SIZE);
