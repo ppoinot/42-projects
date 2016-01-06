@@ -6,53 +6,50 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:47:27 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/01/04 16:49:05 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/04 22:03:37 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define BUF_SIZE 21
-
-#include "libft.h"
+#include "fillit.h"
 
 int		check_tetris_content(char *str)
 {
-    int		dieze;
-    int		link;
-    int		i;
-    
-    dieze = 0;
-    link = 0;
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] == '#')
-        {
-            dieze++;
-            if (str[i + 1] == '#')
-                link++;
-            if (i < 16 && str[i + 5] == '#')
-                link++;
-        }
-        i++;
-    }
-    printf("Dieze = %d\n", dieze);
-    printf("Link = %d\n", link);
-    if(dieze == 4 && link >= 3)
-        return (1);
-    return (0);
+	int		zelda;
+	int		link;
+	int		i;
+
+	zelda = 0;
+	link = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '#')
+		{
+			zelda++;
+			if (str[i + 1] == '#')
+				link++;
+			if (i < 16 && str[i + 5] == '#')
+				link++;
+		}
+		i++;
+	}
+	printf("Zelda = %d\n", zelda);
+	printf("Link = %d\n", link);
+	if (zelda == 4 && link >= 3)
+		return (1);
+	return (0);
 }
 
-int		check_tetris_format(char *str);
+int		check_tetris_format(char *str)
 {
 	int		i;
-	int		;
 
-	i = 0
+	i = 0;
 	while (*str)
 	{
 		if ((i + 1) % 5)
 		{
-			if (str[i] != '\n)
+			if (str[i] != '\n')
 				return (0);
 		}
 		else if (i == 20)
@@ -64,34 +61,57 @@ int		check_tetris_format(char *str);
 			return (0);
 		i++;
 	}
-	return(check_tetris_content(str));
+	return (check_tetris_content(str));
 }
 
-t_list		*add_tetris(int fd)
+void	write_tetris(t_tetris *tetris, char *sample)
+{
+	// Ecris un tetriminos dans la structure
+}
+
+int		read_file(int fd, t_tetris *tetris)
 {
 	int			oct_read;
 	char		*sample;
+	int			nb_tetris;
 
-	oct_read = read(fd, sample, BUF_SIZE);
-	if (oct_read == -1)
-		return (NULL);
+	sample = ft_strnew(BUFF_SIZE);
+	nb_tetris = 0;
+	while ((oct_read = read(fd, sample, BUFF_SIZE)))
+		if (check_tetris_format(sample))
+		{
+			write_tetris(tetris, sample);
+			nb_tetris++;
+		}
+		else
+		{
+			nb_tetris = 0;
+			// FREE T_TETRIS
+			break;
+		}
+	free(sample);
+	return (nb_tetris);
 }
 
-int		main(void)
+int		main(int argc, char **argv)
 {
-	int		fd;
-void
-	fd = -1;
-	fd = open("sample.fillit", O_RDONLY);
-	if (fd != -1)
+	int			fd;
+	int			nb_tetris;
+	t_tetris	*tetris;
+
+	if (argc == 2)
 	{
-		char* = add_tetris(fd);
-		if (close(fd) == -1)
+		fd = open(argv[1], O_RDONLY);
+		if (fd != -1)
 		{
-			ft_putstr("close() error");
+			tetris = NULL;
+			nb_tetris = read_file(fd, tetris);
+			close(fd);
+			if (0 < nb_tetris || nb_tetris < 27)
+				solve(tetris, nb_tetris);
 			return (0);
 		}
-		return(1);
 	}
+	ft_putendl("error");
 	return (0);
 }
