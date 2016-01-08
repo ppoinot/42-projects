@@ -6,40 +6,24 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 19:31:15 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/04 22:03:31 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/08 18:09:50 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-//	CREATION DE T_TETRIS
-
-//	FREE UN T_TETRIS
-void	free_tetris(t_tetris *tetris)
-{
-	if (!tetris)
-		return;
-	while (tetris->prev)
-		tetris = tetris->prev;
-	while (tetris->next)
-	{
-		//ETC...
-	}
-}
-
-//	CREATION DE T_MAP
-char	**make_grid(int size)
+char	**make_grid(int size_y, int size_x)
 {
 	char	**grid;
 	int		i;
 
-	grid = (char **)ft_memalloc(sizeof(char*) * size);
+	grid = (char **)ft_memalloc(sizeof(char*) * size_y);
 	if (grid)
 	{
 		i = 0;
-		while (i < size)
+		while (i < size_y)
 		{
-			grid[i] = (char*)ft_memalloc(size + 1);
+			grid[i] = (char*)ft_memalloc(size_x + 1);
 			if (!grid[i])
 			{
 				while (i-- > 0)
@@ -47,12 +31,79 @@ char	**make_grid(int size)
 				free(grid);
 				return (NULL);
 			}
-			grid[i] = ft_memset(grid[i], '.', size);
-			grid[i][size] = 0;
+			grid[i] = ft_memset(grid[i], '.', size_x);
+			grid[i][size_x] = 0;
 			i++;
 		}
 	}
 	return (grid);
 }
 
-//	FREE MAP
+void	free_grid(char **map, int size_y)
+{
+	int		i;
+
+	i = 0;
+	while (i < size_y)
+		free(map[i++]);
+	free(map);
+}
+
+void	ft_trim_is_life(t_tetris *tetris, char **buff)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	tetris->c_y = tetris->c_y - tetris->s_y + 1;
+	tetris->c_x = tetris->c_x - tetris->s_x + 1;
+	while (i < tetris->s_y)
+	{
+		j = 0;
+		while (j < tetris->s_x)
+		{
+			buff[i][j] = tetris->shape[tetris->c_y + i][tetris->c_x + j];
+			j++;
+		}
+		i++;
+	}
+	tetris->c_y = 0;
+	tetris->c_x = 0;
+	free_grid(tetris->shape, 4);
+	tetris->shape = buff;
+}
+
+int		ft_trim_tetris(t_tetris *tetris)
+{
+	char	**buff;
+	int		i;
+
+	i = 0;
+	tetris->s_y = 4;
+	tetris->s_x = 4;
+	while (i < 4)
+	{
+		(!(ft_strcmp(tetris->shape[i], "...."))) ?
+			(tetris->s_y--) : (tetris->c_y = i);
+		(tetris->shape[0][i] == '.' && tetris->shape[1][i] == '.' &&
+		 tetris->shape[2][i] == '.' && tetris->shape[3][i] == '.') ?
+			(tetris->s_x--) : (tetris->c_x = i);
+		i++;
+	}
+	if (!(buff = make_grid(tetris->s_y, tetris->s_x)))
+		return (0);
+	ft_trim_is_life(tetris, buff);
+	return (1);
+}
+
+int		ft_greaterroot(int nb_tetris)
+{
+	int		i;
+
+	if (nb_tetris < 1 || nb_tetris > 26 )
+		return (0);
+	i = 2;
+	while (i * i < 4 * nb_tetris)
+		i++;
+	return (i);
+}
