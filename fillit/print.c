@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 04:51:20 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/01/14 18:24:59 by ppoinot          ###   ########.fr       */
+/*   Created: 2016/01/14 16:45:08 by vcharles          #+#    #+#             */
+/*   Updated: 2016/01/14 16:48:13 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <string.h>
+#include "fillit.h"
 
-void	*ft_memset(void *b, int c, size_t n)
+void	print_map(char **map, int size)
 {
-	size_t		i;
+	int		i;
 
-	if (!b)
-		return (NULL);
 	i = 0;
-	while (i < n)
-	{
-		((char*)b)[i] = (char)c;
-		i++;
-	}
-	return (b);
+	while (i < size)
+		ft_putendl(map[i++]);
 }

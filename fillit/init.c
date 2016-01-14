@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 04:47:27 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/01/14 18:03:34 by vcharles         ###   ########.fr       */
+/*   Created: 2016/01/14 18:04:24 by vcharles          #+#    #+#             */
+/*   Updated: 2016/01/14 18:47:50 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,10 @@ int		check_tetris_format(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!((i + 1) % 5))
-		{
-			if (str[i] != '\n')
-				return (-1);
-		}
-		else if (i == 20)
-		{
-			if (str[i] && str[i] != '\n')
-				return (-2);
-		}
-		else if (str[i] != '.' && str[i] != '#')
-			return (-3);
+		if ((i + 1) % 5 && (str[i] != '.' && str[i] != '#'))
+			return (0);
+		if (!((i + 1) % 5) && str[i] != '\n')
+			return (0);
 		i++;
 	}
 	return (check_tetris_content(str));
@@ -89,25 +81,23 @@ int		make_tetris(t_tetris *tetris, char *sample)
 	return (ft_trim_tetris(tetris));
 }
 
-#include <stdio.h>
-
 int		read_file(int fd, t_tetris *tetris)
 {
 	int			oct_read;
 	char		*sample;
 	int			nb_tetris;
 
-	if (!(sample = ft_strnew(BUFF_SIZE)))
+	if (!(sample = ft_strnew(20)))
 		return (0);
 	nb_tetris = 'A';
-	while ((oct_read = read(fd, sample, BUFF_SIZE)))
+	
+
+/*	while ((oct_read = read(fd, sample, BUFF_SIZE)))
 	{
 		if (check_tetris_format(sample))
 		{
-			printf("Sample is OK :\n%s", sample);
 			if (tetris)
 			{
-				printf("Tetris is %p\n", tetris);
 				if (!(tetris->next = (t_tetris*)ft_memalloc(sizeof(t_tetris))))
 					return (0);
 				tetris->next->prev = tetris;
@@ -118,16 +108,13 @@ int		read_file(int fd, t_tetris *tetris)
 			if (!make_tetris(tetris, sample))
 				return (0);
 			tetris->pos = nb_tetris++;
-			printf("tetris->pos is %c\n", tetris->pos);
 		}
 		else
 			return (0);
 		ft_bzero(sample, oct_read);
-	}
+	i}*/
 	free(sample);
-	nb_tetris -= 'A';
-	printf("NB is %d\n", nb_tetris);
-	return (nb_tetris);
+	return (nb_tetris - 'A');
 }
 
 int		main(int argc, char **argv)
@@ -135,7 +122,7 @@ int		main(int argc, char **argv)
 	int			fd;
 	int			size;
 	t_tetris	**tetris;
-	//	char		**ans;
+	char		**ans;
 
 	if (argc == 2)
 	{
@@ -144,16 +131,13 @@ int		main(int argc, char **argv)
 		{
 			*tetris = NULL;
 			size = ft_greaterroot(read_file(fd, *tetris));
-			ft_putstr("size is : ");
-			ft_putnbr(size);
-			ft_putchar('\n');
 			close(fd);
-			/*		if (size)
-					{
-					ans = solve(*tetris, size);
-					print_map(ans, size);
-					return (0);
-					}*/
+			if (size)
+			{
+				ans = solve(*tetris, size);
+				print_map(ans, size);
+				return (0);
+			}
 		}
 	}
 	ft_putendl("error");

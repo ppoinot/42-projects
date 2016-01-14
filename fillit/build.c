@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 19:31:15 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 18:09:50 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/14 16:43:11 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		ft_trim_tetris(t_tetris *tetris)
 		(!(ft_strcmp(tetris->shape[i], "...."))) ?
 			(tetris->s_y--) : (tetris->c_y = i);
 		(tetris->shape[0][i] == '.' && tetris->shape[1][i] == '.' &&
-		 tetris->shape[2][i] == '.' && tetris->shape[3][i] == '.') ?
+		tetris->shape[2][i] == '.' && tetris->shape[3][i] == '.') ?
 			(tetris->s_x--) : (tetris->c_x = i);
 		i++;
 	}
@@ -100,7 +100,7 @@ int		ft_greaterroot(int nb_tetris)
 {
 	int		i;
 
-	if (nb_tetris < 1 || nb_tetris > 26 )
+	if (nb_tetris < 1 || nb_tetris > 26)
 		return (0);
 	i = 2;
 	while (i * i < 4 * nb_tetris)
