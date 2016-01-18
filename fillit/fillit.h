@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 17:29:56 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 13:39:49 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/18 17:43:49 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <fcntl.h>
 # include "../libft/libft.h"
-# include <stdio.h>
 
 typedef	struct			s_tetris
 {
@@ -47,17 +46,17 @@ int						check_tetris_format(char *str);
 /*
 ** INIT.C
 */
-int						make_tetriminos(t_tetris *tetris, char *sample);
-int						create_tetris_struct(t_tetris *tetris);
-int						read_file(int fd, t_tetris *tetris);
+int						make_tetriminos(t_tetris **tetris, char *sample);
+int						create_tetris_struct(t_tetris **tetris);
+int						read_file(int fd, t_tetris **tetris);
 int						main(int argc, char **argv);
 
 /*
 ** SOLVE.C
 */
-void					cleanup(t_tetris *tetris);
+void					cleanup(t_tetris **tetris);
 void					print_map(char **map, int size);
-void					solve(t_tetris *tetris, int size);
+void					solve(t_tetris **tetris, int size);
 
 /*
 ** STRUCT.C

@@ -6,62 +6,62 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:04:24 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 14:11:29 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/01/18 17:21:25 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		make_tetriminos(t_tetris *tetris, char *sample)
+int			make_tetriminos(t_tetris **tetris, char *sample)
 {
 	int		i;
 	int		j;
 
-	if (!(tetris->shape = (char**)ft_memalloc(sizeof(char*) * 4)))
+	if (!((*tetris)->shape = (char**)ft_memalloc(sizeof(char*) * 4)))
 		return (-1);
 	i = 0;
 	while (i < 4)
 	{
-		if (!(tetris->shape[i] = (char*)ft_memalloc(5)))
+		if (!((*tetris)->shape[i] = (char*)ft_memalloc(5)))
 		{
-			free_grid(tetris->shape, i);
+			free_grid((*tetris)->shape, i);
 			return (0);
 		}
 		j = 0;
 		while (j < 4)
 		{
-			tetris->shape[i][j] = sample[5 * i + j];
+			(*tetris)->shape[i][j] = sample[5 * i + j];
 			j++;
 		}
-		tetris->shape[i][j] = 0;
+		(*tetris)->shape[i][j] = 0;
 		i++;
 	}
-	return (ft_trim_tetris(tetris));
+	return (ft_trim_tetris(*tetris));
 }
 
-int		create_tetris_struct(t_tetris *tetris)
+int			create_tetris_struct(t_tetris **tetris)
 {
-	if (tetris)
+	if (*tetris)
 	{
-		if (!(tetris->next = (t_tetris*)ft_memalloc(sizeof(t_tetris))))
+		if (!((*tetris)->next = (t_tetris*)ft_memalloc(sizeof(t_tetris))))
 			return (0);
-		tetris->next->prev = tetris;
-		tetris = tetris->next;
-		tetris->next = NULL;
-		tetris->pos = tetris->prev->pos + 1;
+		(*tetris)->next->prev = *tetris;
+		*tetris = (*tetris)->next;
+		(*tetris)->next = NULL;
+		(*tetris)->pos = (*tetris)->prev->pos + 1;
 	}
 	else
 	{
-		if (!(tetris = (t_tetris*)ft_memalloc(sizeof(t_tetris))))
+		if (!(*tetris = (t_tetris*)ft_memalloc(sizeof(t_tetris))))
 			return (0);
-		tetris->prev = NULL;
-		tetris->next = NULL;
-		tetris->pos = 'A';
+		(*tetris)->prev = NULL;
+		(*tetris)->next = NULL;
+		(*tetris)->pos = 'A';
 	}
 	return (1);
 }
 
-int		read_file(int fd, t_tetris *tetris)
+int			read_file(int fd, t_tetris **tetris)
 {
 	int			oct_read;
 	char		*sample;
@@ -72,25 +72,23 @@ int		read_file(int fd, t_tetris *tetris)
 		return (0);
 	while (!eof)
 	{
-		if ((oct_read = read(fd, sample, 20)) != 20 ||
+		if ((oct_read = read(fd, sample, 20)) == -1 ||
 				!check_tetris_format(sample) ||
 				!create_tetris_struct(tetris) ||
 				!make_tetriminos(tetris, sample) ||
-				(oct_read = read(fd, sample, 1)) != 1)
+				(oct_read = read(fd, sample, 1)) == -1)
 		{
 			free(sample);
 			return (0);
 		}
-		if (*sample != '\n' && *sample != '\0')
-			return (0);
-		if (*sample == '\0')
+		if (*sample != '\n' && !oct_read)
 			eof++;
 	}
 	free(sample);
-	return (tetris->pos - 'A' + 1);
+	return ((*tetris)->pos - 'A' + 1);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	int			fd;
 	int			size;
@@ -102,15 +100,14 @@ int		main(int argc, char **argv)
 		if (fd != -1 && (tetris = (t_tetris**)ft_memalloc(sizeof(t_tetris*))))
 		{
 			*tetris = NULL;
-			size = ft_greaterroot(read_file(fd, *tetris));
+			size = ft_greaterroot(read_file(fd, tetris));
 			close(fd);
 			if (size)
 			{
-				solve(*tetris, size);
+				solve(tetris, size);
 				return (0);
 			}
-			cleanup(*tetris);
-			free(tetris);
+			cleanup(tetris);
 		}
 	}
 	ft_putendl("error");

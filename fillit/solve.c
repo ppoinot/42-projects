@@ -6,25 +6,26 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 16:32:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 13:41:39 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/18 17:38:49 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	cleanup(t_tetris *tetris)
+void	cleanup(t_tetris **tetris)
 {
 	t_tetris	*buff;
 
-	while (tetris->prev)
-		tetris = tetris->prev;
-	while (tetris)
+	while ((*tetris)->prev)
+		*tetris = (*tetris)->prev;
+	while (*tetris)
 	{
-		buff = tetris->next;
-		free_grid(tetris->shape, tetris->s_y);
-		free(tetris);
-		tetris = buff;
+		buff = (*tetris)->next;
+		free_grid((*tetris)->shape, (*tetris)->s_y);
+		free(*tetris);
+		*tetris = buff;
 	}
+	free(tetris);
 }
 
 void	print_map(char **map, int size)
@@ -36,7 +37,7 @@ void	print_map(char **map, int size)
 		ft_putendl(map[i++]);
 }
 
-void	solve(t_tetris *tetris, int size)
+void	solve(t_tetris **tetris, int size)
 {
 	char		**map;
 	int			solving;
@@ -46,11 +47,10 @@ void	solve(t_tetris *tetris, int size)
 	{
 		map = make_grid(size, size);
 		if (!map)
-		{
-			ft_putendl("malloc() error in function solve");
 			return ;
-		}
-		map = backtracking(tetris, map, size);
+		while ((*tetris)->prev)
+			*tetris = (*tetris)->prev;
+		map = backtracking(*tetris, map, size);
 		if (map)
 			solving = 0;
 		else
