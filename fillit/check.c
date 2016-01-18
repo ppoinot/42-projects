@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 12:02:48 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 13:38:42 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:11:56 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		check_tetris_content(char *str)
 			zelda++;
 			if (str[i + 1] == '#')
 				link++;
-			if (i < 16 && str[i + 5] == '#')
+			if (i < 15 && str[i + 5] == '#')
 				link++;
 		}
 		i++;
@@ -43,6 +43,8 @@ int		check_tetris_format(char *str)
 	int		i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 	{
 		if ((i + 1) % 5 && (str[i] != '.' && str[i] != '#'))

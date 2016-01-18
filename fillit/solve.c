@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 16:32:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 17:38:49 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/18 18:10:06 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ void	cleanup(t_tetris **tetris)
 {
 	t_tetris	*buff;
 
-	while ((*tetris)->prev)
-		*tetris = (*tetris)->prev;
-	while (*tetris)
+	if (*tetris)
 	{
-		buff = (*tetris)->next;
-		free_grid((*tetris)->shape, (*tetris)->s_y);
-		free(*tetris);
-		*tetris = buff;
+		while ((*tetris)->prev)
+			*tetris = (*tetris)->prev;
+		while (*tetris)
+		{
+			buff = (*tetris)->next;
+			free_grid((*tetris)->shape, (*tetris)->s_y);
+			free(*tetris);
+			*tetris = buff;
+		}
 	}
 	free(tetris);
 }

@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:04:24 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 17:21:25 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:06:54 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,24 +65,23 @@ int			read_file(int fd, t_tetris **tetris)
 {
 	int			oct_read;
 	char		*sample;
-	int			eof;
 
-	eof = 0;
+	oct_read = 1;
 	if (!(sample = ft_strnew(20)))
 		return (0);
-	while (!eof)
+	while (oct_read)
 	{
-		if ((oct_read = read(fd, sample, 20)) == -1 ||
-				!check_tetris_format(sample) ||
-				!create_tetris_struct(tetris) ||
+		if ((oct_read = read(fd, sample, 20) == -1) ||
+				!check_tetris_format(sample) || !create_tetris_struct(tetris) ||
 				!make_tetriminos(tetris, sample) ||
-				(oct_read = read(fd, sample, 1)) == -1)
+				((oct_read = read(fd, sample, 1)) == -1))
 		{
 			free(sample);
 			return (0);
 		}
-		if (*sample != '\n' && !oct_read)
-			eof++;
+		if (oct_read && *sample != '\n')
+			return (0);
+		ft_bzero(sample, 20);
 	}
 	free(sample);
 	return ((*tetris)->pos - 'A' + 1);
