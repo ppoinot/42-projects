@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:04:24 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/14 18:47:50 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/18 11:30:59 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,36 @@ int		read_file(int fd, t_tetris *tetris)
 	int			oct_read;
 	char		*sample;
 	int			nb_tetris;
+	int			test_boucle;
 
-	if (!(sample = ft_strnew(20)))
-		return (0);
+	test_boucle = 0;
 	nb_tetris = 'A';
-	
-
+	while (!test_boucle)
+	{
+		if (!(sample = ft_strnew(20)))
+			return (0);
+		if ((oct_read = read(fd, sample, 20)) != 20)
+			return (0);
+		if (!check_tetris_format(sample))
+			return (0);
+		if (!make_tetris(tetris, sample))
+			return (0);
+		free(sample);
+		nb_tetris += 1;
+		if (!(sample = ft_strnew(1)))
+			return (0);
+		if ((oct_read = read(fd, sample, 1)) != 1)
+			return (0);
+		if (*sample != '\n')
+		{
+			if (*sample == '\0')
+				test_boucle++;
+			else
+				return (0);
+		}
+		free(sample);
+	}
+	return (nb_tetris - 'A');
 /*	while ((oct_read = read(fd, sample, BUFF_SIZE)))
 	{
 		if (check_tetris_format(sample))
@@ -113,8 +137,7 @@ int		read_file(int fd, t_tetris *tetris)
 			return (0);
 		ft_bzero(sample, oct_read);
 	i}*/
-	free(sample);
-	return (nb_tetris - 'A');
+//	free(sample);
 }
 
 int		main(int argc, char **argv)
