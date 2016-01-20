@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 11:25:54 by ppoinot           #+#    #+#              #
-#    Updated: 2016/01/20 12:22:45 by ppoinot          ###   ########.fr        #
+#    Updated: 2016/01/20 14:52:36 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,10 @@ rm = rm -f
 CFLAGS = -Wall -Werror -Wextra
 INCLUDES = ./
 SUBDIR = ./libft
+LIBFT = -L libft/libft.a
 OBJ = $(SRC:.c=.o)
-SRC = struct.c \
-	  init.c \
+SRC = init.c \
+	  struct.c \
 	  backtracking.c \
 	  bridge.c \
 	  check.c \
@@ -34,7 +35,7 @@ $(NAME) : $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCLUDES)
+	$(CC) -o $(NAME) $(LIBFT) -c $< $(CFLAGS) -I $(INCLUDES)
 
 clean:
 	$(RM) $(OBJ)
