@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 11:25:54 by ppoinot           #+#    #+#              #
-#    Updated: 2016/01/20 15:31:35 by ppoinot          ###   ########.fr        #
+#    Updated: 2016/01/20 15:38:13 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) $(LIBFT) -o $(NAME) $(OBJ)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -I $(INCLUDES) $*.c
+	$(CC) $(CFLAGS) -c -I $(INCLUDES) $(SRC)
 
 clean:
 	$(RM) $(OBJ)
