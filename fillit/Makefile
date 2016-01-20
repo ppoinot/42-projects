@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 11:25:54 by ppoinot           #+#    #+#              #
-#    Updated: 2016/01/20 11:58:53 by ppoinot          ###   ########.fr        #
+#    Updated: 2016/01/20 12:22:45 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,4 +46,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re fclean clean all
+.PHONY: re fclean clean subsystem all
