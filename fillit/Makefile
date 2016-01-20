@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 11:25:54 by ppoinot           #+#    #+#              #
-#    Updated: 2016/01/20 15:22:03 by ppoinot          ###   ########.fr        #
+#    Updated: 2016/01/20 15:28:40 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,12 @@ SRC = init.c \
 	  solve.c
 
 all : subsystem $(NAME)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
 subsystem :
 	make -C ./libft
 
 $(NAME) : $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	$(CC) $(CFLAGS) $(LIBFT) -o $(NAME) $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -I $(INCLUDES) $*.c
