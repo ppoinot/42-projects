@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 11:25:54 by ppoinot           #+#    #+#              #
-#    Updated: 2016/01/20 15:28:40 by ppoinot          ###   ########.fr        #
+#    Updated: 2016/01/20 15:31:35 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ rm = rm -f
 CFLAGS = -Wall -Werror -Wextra
 INCLUDES = ./
 SUBDIR = ./libft
-LIBFT = -L libft
+LIBFT = -L libft -lft
 OBJ = $(SRC:.c=.o)
 SRC = init.c \
 	  struct.c \
