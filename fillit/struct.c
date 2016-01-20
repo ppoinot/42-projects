@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 19:31:15 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 12:01:16 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/19 15:56:47 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_trim_is_life(t_tetris *tetris, char **buff)
 		}
 		i++;
 	}
+	tetris->bridge_p = set_bridge_p(tetris);
 	tetris->c_y = 0;
 	tetris->c_x = 0;
 	free_grid(tetris->shape, 4);
@@ -86,7 +87,7 @@ int		ft_trim_tetris(t_tetris *tetris)
 		(!(ft_strcmp(tetris->shape[i], "...."))) ?
 			(tetris->s_y--) : (tetris->c_y = i);
 		(tetris->shape[0][i] == '.' && tetris->shape[1][i] == '.' &&
-		tetris->shape[2][i] == '.' && tetris->shape[3][i] == '.') ?
+		 tetris->shape[2][i] == '.' && tetris->shape[3][i] == '.') ?
 			(tetris->s_x--) : (tetris->c_x = i);
 		i++;
 	}

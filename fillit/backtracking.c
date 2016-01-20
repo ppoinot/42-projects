@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 15:12:06 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 18:10:41 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:21:53 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,13 @@ char	**backtracking(t_tetris *tetris, char **map, int size)
 	while (tetris)
 	{
 		if (ft_try_slot(map, size, tetris))
-			tetris = tetris->next;
+			tetris = use_bridge_p(tetris->next, size);
 		else
 		{
 			ft_move_right(tetris, size);
 			while (tetris->c_y >= size)
 			{
 				tetris->c_y = 0;
-				tetris->c_x = 0;
 				if ((tetris = tetris->prev))
 				{
 					ft_erase_tetris(map, tetris);

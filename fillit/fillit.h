@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/04 17:29:56 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/18 17:43:49 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:18:36 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef	struct			s_tetris
 	int					s_y;
 	int					s_x;
 	char				pos;
+	struct s_tetris		*bridge_p;
 	int					c_y;
 	int					c_x;
 	struct s_tetris		*next;
@@ -50,6 +51,13 @@ int						make_tetriminos(t_tetris **tetris, char *sample);
 int						create_tetris_struct(t_tetris **tetris);
 int						read_file(int fd, t_tetris **tetris);
 int						main(int argc, char **argv);
+
+/*
+** BRIDGE.C
+*/
+int						shapecmp(t_tetris *buff, t_tetris *tetris);
+t_tetris				*set_bridge_p(t_tetris *tetris);
+t_tetris				*use_bridge_p(t_tetris *tetris, int size);
 
 /*
 ** SOLVE.C
