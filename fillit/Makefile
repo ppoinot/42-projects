@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 11:25:54 by ppoinot           #+#    #+#              #
-#    Updated: 2016/01/20 14:52:36 by ppoinot          ###   ########.fr        #
+#    Updated: 2016/01/20 15:22:03 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ rm = rm -f
 CFLAGS = -Wall -Werror -Wextra
 INCLUDES = ./
 SUBDIR = ./libft
-LIBFT = -L libft/libft.a
+LIBFT = -L libft
 OBJ = $(SRC:.c=.o)
 SRC = init.c \
 	  struct.c \
@@ -26,16 +26,17 @@ SRC = init.c \
 	  solve.c
 
 all : subsystem $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
 subsystem :
-	cd $(SUBDIR) && $(MAKE)
+	make -C ./libft
 
 $(NAME) : $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) -o $(NAME) $(LIBFT) -c $< $(CFLAGS) -I $(INCLUDES)
+	$(CC) $(CFLAGS) -c -I $(INCLUDES) $*.c
 
 clean:
 	$(RM) $(OBJ)
