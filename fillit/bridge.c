@@ -6,7 +6,7 @@
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 11:13:38 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/19 16:21:51 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/01/20 15:00:22 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			shapecmp(t_tetris *buff, t_tetris *tetris)
 	int		i;
 	int		j;
 
-	if (buff->s_y != tetris->s_y || buff->s_x != tetris ->s_x)
+	if (buff->s_y != tetris->s_y || buff->s_x != tetris->s_x)
 		return (0);
 	i = 0;
 	while (i < buff->s_y)

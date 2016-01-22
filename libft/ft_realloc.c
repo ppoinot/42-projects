@@ -6,10 +6,19 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 18:26:41 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/01/14 18:27:08 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/01/20 15:50:31 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
+void	*realloc(void *ptr, size_t size)
+{
+	if (ptr)
+	{
+		if (size)
+		{
+			
+		}
+	}
+}
