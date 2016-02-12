@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 04:52:24 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/01/22 11:29:09 by ppoinot          ###   ########.fr       */
+/*   Created: 2016/01/22 11:05:22 by ppoinot           #+#    #+#             */
+/*   Updated: 2016/01/22 11:23:01 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+#define BUFF_SIZE 32
 
-void	ft_putstr(char const *s)
-{
-	while (*s)
-		write(1, s++, 1);
-}
+#include <unistd.h>
+
+
+
+#endif
