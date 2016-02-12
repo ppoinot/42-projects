@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 14:53:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 17:32:19 by vcharles         ###   ########.fr       */
+/*   Created: 2015/12/30 11:51:41 by vcharles          #+#    #+#             */
+/*   Updated: 2015/12/30 11:54:38 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	void	*dst;
-
-	if (!(dst = ft_memalloc(size)))
-		return (ptr);
-	if (ptr)
+	if (n == -2147483648)
 	{
-		ft_memcpy(dst, ptr, size);
-		free(ptr);
+		ft_putstr_fd("-2147483648", fd);
+		return ;
 	}
-	return (dst);
+	if (n < 0)
+	{
+		n = -n;
+		ft_putchar_fd('-', fd);
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd(n % 10 + 48, fd);
 }

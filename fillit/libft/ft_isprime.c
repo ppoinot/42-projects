@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_isprime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 14:53:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 17:32:19 by vcharles         ###   ########.fr       */
+/*   Created: 2015/12/29 14:04:57 by vcharles          #+#    #+#             */
+/*   Updated: 2015/12/29 16:23:38 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+int		ft_isprime(int c)
 {
-	void	*dst;
+	int		i;
 
-	if (!(dst = ft_memalloc(size)))
-		return (ptr);
-	if (ptr)
+	if (c == 2)
+		return (1);
+	if (c < 2 || !(c % 2))
+		return (0);
+	i = 3;
+	while (i * i <= c)
 	{
-		ft_memcpy(dst, ptr, size);
-		free(ptr);
+		if (!(c % i))
+			return (0);
+		i = i + 2;
 	}
-	return (dst);
+	return (1);
 }

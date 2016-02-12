@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 14:53:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 17:32:19 by vcharles         ###   ########.fr       */
+/*   Created: 2015/12/29 15:17:57 by vcharles          #+#    #+#             */
+/*   Updated: 2015/12/29 16:30:50 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	void	*dst;
+	t_list	*new;
 
-	if (!(dst = ft_memalloc(size)))
-		return (ptr);
-	if (ptr)
+	new = ft_memalloc(sizeof(t_list));
+	if (new)
 	{
-		ft_memcpy(dst, ptr, size);
-		free(ptr);
+		if (content)
+		{
+			new->content = ft_memalloc(content_size);
+			if (!new->content)
+				return (NULL);
+			ft_memcpy(new->content, content, content_size);
+			new->content_size = content_size;
+		}
+		else
+		{
+			new->content = NULL;
+			new->content_size = 0;
+		}
 	}
-	return (dst);
+	return (new);
 }

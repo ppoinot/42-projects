@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 14:53:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 17:32:19 by vcharles         ###   ########.fr       */
+/*   Created: 2015/12/29 14:26:52 by vcharles          #+#    #+#             */
+/*   Updated: 2016/01/03 13:40:51 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+char	*ft_itoa(int n)
 {
-	void	*dst;
+	char	*ans;
+	int		bck;
+	int		size;
 
-	if (!(dst = ft_memalloc(size)))
-		return (ptr);
-	if (ptr)
+	bck = n;
+	size = 1;
+	while ((n = n / 10))
+		size++;
+	if (bck < 0)
+		size++;
+	n = bck;
+	ans = ft_strnew(size);
+	if (ans)
 	{
-		ft_memcpy(dst, ptr, size);
-		free(ptr);
+		ans[size] = 0;
+		while (size--)
+		{
+			ans[size] = ft_abs(bck % 10) + '0';
+			bck = bck / 10;
+		}
+		if (n < 0)
+			ans[0] = '-';
 	}
-	return (dst);
+	return (ans);
 }

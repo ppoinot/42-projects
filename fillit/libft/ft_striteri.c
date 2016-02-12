@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 14:53:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 17:32:19 by vcharles         ###   ########.fr       */
+/*   Created: 2016/01/01 13:31:14 by vcharles          #+#    #+#             */
+/*   Updated: 2016/01/03 12:45:48 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+void	ft_striteri(char *str, void (*f)(unsigned int, char *))
 {
-	void	*dst;
+	unsigned int	i;
 
-	if (!(dst = ft_memalloc(size)))
-		return (ptr);
-	if (ptr)
+	if (str && f)
 	{
-		ft_memcpy(dst, ptr, size);
-		free(ptr);
+		i = 0;
+		while (str[i])
+		{
+			f(i, &str[i]);
+			i++;
+		}
 	}
-	return (dst);
 }

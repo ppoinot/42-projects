@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 14:53:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 17:32:19 by vcharles         ###   ########.fr       */
+/*   Created: 2015/12/29 17:51:03 by vcharles          #+#    #+#             */
+/*   Updated: 2016/01/03 13:04:15 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	void	*dst;
+	t_list	*ptr;
+	t_list	*run;
 
-	if (!(dst = ft_memalloc(size)))
-		return (ptr);
-	if (ptr)
+	if (!lst)
+		return (NULL);
+	ptr = NULL;
+	if (!(ptr = f(lst)))
+		return (NULL);
+	run = ptr;
+	run->next = NULL;
+	while (lst->next)
 	{
-		ft_memcpy(dst, ptr, size);
-		free(ptr);
+		lst = lst->next;
+		run->next = f(lst);
+		if (run->next == NULL)
+			return (NULL);
+		run = run->next;
 	}
-	return (dst);
+	return (ptr);
 }

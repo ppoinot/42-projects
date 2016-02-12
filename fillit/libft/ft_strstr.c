@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 14:53:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 17:32:19 by vcharles         ###   ########.fr       */
+/*   Created: 2015/12/31 17:35:28 by vcharles          #+#    #+#             */
+/*   Updated: 2015/12/31 19:24:19 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+char	*ft_strstr(const char *big, const char *small)
 {
-	void	*dst;
+	int		i1;
+	int		i2;
+	int		i3;
 
-	if (!(dst = ft_memalloc(size)))
-		return (ptr);
-	if (ptr)
+	if (small[0] == 0)
+		return ((char *)(big));
+	i1 = 0;
+	while (big[i1])
 	{
-		ft_memcpy(dst, ptr, size);
-		free(ptr);
+		i2 = i1;
+		i3 = 0;
+		while (big[i2] == small[i3])
+		{
+			i2++;
+			i3++;
+			if (small[i3] == 0)
+				return (char *)(&big[i1]);
+		}
+		i1++;
 	}
-	return (dst);
+	return (NULL);
 }

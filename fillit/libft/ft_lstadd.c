@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcharles <vuck@hotmail.fr>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/01 14:53:31 by vcharles          #+#    #+#             */
-/*   Updated: 2016/01/08 17:32:19 by vcharles         ###   ########.fr       */
+/*   Created: 2015/12/29 14:55:07 by vcharles          #+#    #+#             */
+/*   Updated: 2016/01/02 14:21:22 by vcharles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_realloc(void *ptr, size_t size)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	void	*dst;
-
-	if (!(dst = ft_memalloc(size)))
-		return (ptr);
-	if (ptr)
+	if (alst && new)
 	{
-		ft_memcpy(dst, ptr, size);
-		free(ptr);
+		new->next = *alst;
+		*alst = new;
 	}
-	return (dst);
 }
