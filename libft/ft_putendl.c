@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:51:47 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/10 04:51:48 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/02/12 14:27:56 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_putendl(char const *s)
 {
-	ft_putstr(s);
-	ft_putchar('\n');
+	while (*s)
+		write(1, s++, 1);
+	write(1, "\n", 1);
 }
