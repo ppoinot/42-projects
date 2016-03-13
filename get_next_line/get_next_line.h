@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 12:16:42 by vcharles          #+#    #+#             */
-/*   Updated: 2016/02/04 12:16:42 by vcharles         ###   ########.fr       */
+/*   Updated: 2016/03/13 02:38:28 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 
 # define BUFF_SIZE 32
 
-# include <fcntl.h>
 # include "./libft/libft.h"
 
 typedef	struct			s_gnl
 {
-	char				**shape;
+	int					line;
+	char				*sentence;
 	int					fd;
 	struct s_gnl		*next;
-	struct s_gnl		*prev;
 }						t_gnl;
 
 /*
