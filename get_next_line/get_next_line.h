@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 12:16:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/03/15 00:00:56 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/03/18 16:48:39 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,13 @@
 
 # define BUFF_SIZE 32
 
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 
 typedef	struct			s_gnl
 {
 	int					line;
 	char				*sentence;
 	int					fd;
-	struct s_gnl		*next;
 }						t_gnl;
-
-/*
-** BACKTRACKING.C
-*/
 
 #endif

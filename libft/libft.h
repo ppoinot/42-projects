@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:56:41 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/16 00:54:39 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/03/18 13:28:49 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
+void				*ft_realloc(void *ptr, size_t size);
 
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);
