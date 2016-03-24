@@ -6,31 +6,46 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 12:16:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/03/18 16:48:45 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/03/24 18:42:44 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*gnl_realloc(size_t ol, t_gnl *c_s)
+size_t	gnl_lecture(t_gnl *c_s, int fd, size_t ol)
 {
-	char		*buff2;
-	char		*buff1
-	size_t		i;
-	size_t		n;//	size buff (!= BUFF_SIZE)
+	int		x;
+	int		i;
+	char	*buff_1;
 
+	x = 0;
 	i = 0;
-	n = ft_strlen(c_s->sentence);
-	while (c_s->sentence[i] != '\n' && c_s->sentence[i])
-		i++;
-	if (i >= n)
+	if (!(buff_1 = (char*)malloc(sizeof(char) * BUFF_SIZE)) ||
+		(ol = read(fd, buff_1, BUFF_SIZE)) != -1)
+		return (-1);
+	if (ol == 0)
+		return (-2); //EOF = 1
+	while (buff_1[i])
+	{
+		if (buff_1[i] == '\n')
 		{
-			if ((ol = read(c_s->fd, buff, BUFF_SIZE)) == -1)
-				return (NULL);
-			gnl_realloc(ol, c_s);
+			x = i;
+			break;
 		}
-	sentence = ft_realloc(buff, i);
-	return (sentence);
+		i++;
+	}
+	return (x);
+}
+
+char	*gnl_realloc(t_gnl *c_s, int x, char *buff_1)
+{
+	if (x == 0)
+	{
+		buff_1 = ft_realloc(buff_1, ft_strlen + BUFF_SIZE);
+	}
+	buff_1 = ft_realloc(buff_1, x);
+	ft_putstr(buff_1);
+	return (buff_1);
 }
 
 int		get_next_line(int const fd, char **line)
@@ -42,12 +57,6 @@ int		get_next_line(int const fd, char **line)
 	c_s->fd = fd;
 	if (!(c_s->sentence = (char*)malloc(sizeof(char) * BUFF_SIZE)))
 		return (0);
-	if ((ol = read(c_s->fd, c_s->sentence, BUFF_SIZE)) != -1 ||
-		(ol != 0))
-	{
-		c_s->sentence = gnl_realloc(ol, c_s);
-	}
-	else if (ol == 0)
-		//EOF = 1;
+
 	return (0);
 }
