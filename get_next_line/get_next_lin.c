@@ -6,7 +6,7 @@
 /*   By: ppoinot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 04:19:25 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/07 12:52:37 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/07 16:38:09 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
-char	**del_first_line(char **line)
-{
-	int		i;
-	char	**new;
-	int		;'
-
-	i = 0;
-	j = 0;
-	while (str[j])
-		j++;
-	if(!(new = (char**)malloc(sizeof((char*) * j - 1)
-	while (line[i+1])
-	{
-		ft_strcpy(new[i], line[i+1]);
-		i++;
-	}
-}
 
 char	*lire_un_fichier(int fd)
 {
@@ -74,19 +56,18 @@ int		get_next_line(const int fd, char **line)
 
 	i++;
 
-	/*	while(*c != '\n' && i != ft_strlen(buff_1))
-		{
+	while(*c != '\n' && i != ft_strlen(buff_1))
+	{
 		sentence[i] = *c;
-	 *c = buff_1[i++];
-	 i++;
+		*c = buff_1[i++];
+		i++;
 	 }
 	 if (i != ft_strlen(buff_1))
 	 {
 	 sentence = ft_realloc(sentence, i);
 	 ft_putstr(sentence);
-
+	
 	 }
-	 */
 	return (0);
 }
 
