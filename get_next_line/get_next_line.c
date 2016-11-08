@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 04:19:25 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/08 18:11:35 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/08 19:23:29 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,27 @@ char	*lire_un_fichier(int fd)
 
 int		get_next_line(const int fd, char **line)
 {
-	static char		*buff_1;
-	char			**tab;
+	static char		*buff_1 = NULL;
+	char			**tab = NULL;
 	int				n;
-	static int		i;
+	static int		i = 0;
+	int				x;
 
 	if (!BUFF_SIZE)
 		return (0);
 	if (!buff_1)
 		buff_1 = lire_un_fichier(fd);
 	n = ft_nbocc(buff_1, '\n');
+	ft_putnbr(n);
+	ft_putendl(" -> N");
+	//TESTER TAB
 	tab = ft_strsplit(buff_1, '\n');
 	//free(buff_1);
 	*line = tab[i++];
-	if (i < n)
+	if (i <= n + 1 && *line)
 		return (1);
 	free(buff_1);
+	free(tab);
 	return (0);
 }
 
@@ -88,6 +93,7 @@ int		main(void)
 		ft_putendl(line);
 		free(line);
 	}
+	close(fd);
 	return (1);
 }
 /*
