@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 04:19:25 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/08 14:59:21 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/08 18:11:35 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ char	*lire_un_fichier(int fd)
 			if (!(buff_2 = (char*)malloc(sizeof(char) * BUFF_SIZE))
 					|| (nb_oc_lu = read(fd, buff_2, BUFF_SIZE)) == -1)
 				return (NULL);
-			buff_1 = ft_realloc(buff_1, ft_strlen(buff_1) + nb_oc_lu);
+			buff_1 = ft_realloc(buff_1, ft_strlen(buff_1) + nb_oc_lu + 1);
 			ft_strcat(buff_1, buff_2);
 		}
 		else {
 			if (!(buff_2 = (char*)malloc(sizeof(char) * BUFF_SIZE))
 					|| (nb_oc_lu = read(fd, buff_2, BUFF_SIZE)) == -1)
 				return (NULL);
-			buff_1 = ft_realloc(buff_1, ft_strlen(buff_1) + nb_oc_lu);
+			buff_1 = ft_realloc(buff_1, ft_strlen(buff_1) + nb_oc_lu + 1);
 			ft_strcat(buff_1, buff_2);
 			nb_oc_lu = 0;
 		}
@@ -62,7 +62,7 @@ int		get_next_line(const int fd, char **line)
 	tab = ft_strsplit(buff_1, '\n');
 	//free(buff_1);
 	*line = tab[i++];
-	if (i <= n)
+	if (i < n)
 		return (1);
 	free(buff_1);
 	return (0);
@@ -88,7 +88,7 @@ int		main(void)
 		ft_putendl(line);
 		free(line);
 	}
-	return (0);
+	return (1);
 }
 /*
    1- allouer un buffer de taille TAILLE

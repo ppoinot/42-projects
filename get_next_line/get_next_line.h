@@ -6,14 +6,14 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 12:16:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/08 14:01:42 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/08 15:52:25 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 15555
+# define BUFF_SIZE 1000000
 
 # include "../libft/libft.h"
 
