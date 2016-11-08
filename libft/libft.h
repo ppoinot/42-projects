@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:56:41 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/03/18 13:28:49 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/08 09:21:55 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_isspace(int c);
+int					ft_nbocc(char *chaine, char c);
 
 int					ft_toupper(int c);
 int					ft_tolower(int c);
