@@ -6,13 +6,13 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 09:15:01 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/08 09:19:14 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/08 09:42:39 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		nbocc(char *chaine, char c)
+int		ft_nbocc(char *chaine, char c)
 {
 	int		n;
 

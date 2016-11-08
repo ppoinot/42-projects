@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 04:57:12 by ppoinot           #+#    #+#              #
-#    Updated: 2016/11/08 09:20:08 by ppoinot          ###   ########.fr        #
+#    Updated: 2016/11/08 10:55:45 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 CC = gcc
 rm = rm -f
 CFLAGS = -Wall -Werror -Wextra
-INCLUDES = ./
+INCLUDES = ./libft.h
 OBJ = $(SRC:.c=.o)
 SRC = ft_atoi.c \
 	  ft_bzero.c \
@@ -81,13 +81,15 @@ SRC = ft_atoi.c \
 	  ft_print_reverse_alphabet.c \
 	  ft_print_reverse_alphabet_fd.c \
 	  ft_strrev.c \
-	  ft_nbocc.c
+	  ft_nbocc.c \
+	  ft_realloc.c
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
+	make clean
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCLUDES)
