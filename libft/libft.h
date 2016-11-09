@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:56:41 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/08 09:21:55 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/09 11:10:41 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void				ft_print_alphabet(void);
 void				ft_print_alphabet_fd(int fd);
 void				ft_print_reverse_alphabet(void);
 void				ft_print_reverse_alphabet_fd(int fd);
+void				*ft_print_whitespace(char *chaine);
 char				*ft_strrev(char *str);
 
 typedef struct		s_list
