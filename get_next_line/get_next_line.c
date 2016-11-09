@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 04:19:25 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/09 11:25:37 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/09 21:17:09 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,30 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-void	*debug(char **tableau)
+int		nb_de_ligne(char **tab)
+{
+	int		i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i - 2);
+}
+
+/*void	*debug(char **tableau)
 {
 	int		i;
 
 	i = 0;
 	while (tableau[i])
+	{
+		ft_putstr("tab[");
+		ft_putnbr(i);
+		ft_putstr("] : ");
 		ft_print_whitespace(tableau[i++]);
+	}
 	return (NULL);
-}
+}*/
 
 char	*lire_un_fichier(int fd)
 {
@@ -61,23 +76,31 @@ int		get_next_line(const int fd, char **line)
 {
 	static char		*buff_1 = NULL;
 	char			**tab = NULL;
-	int				n;
 	static int		i = 0;
+	int				n;
 
 	if (!BUFF_SIZE)
 		return (0);
 	if (!buff_1)
 		buff_1 = lire_un_fichier(fd);
-	n = ft_nbocc(buff_1, '\n');
-	ft_putnbr(n);
-	ft_putendl(" -> N");
+	//ft_putstr("i =  ");
+	//ft_putnbr(i);
+	//ft_putchar('\n');
 	//TESTER TAB
 	tab = ft_strsplit(buff_1, '\n');
-	debug(tab);
-	//free(buff_1);
-	*line = tab[i++];
+	n = nb_de_ligne(tab);
+	//ft_putnbr(n + 22);
+	//ft_putendl(" -> N");
+	//debug(tab);
+	//ft_putstr("buff 1 = ");
+	//ft_print_whitespace(buff_1);
+	//ft_putstr("-----------------------------------\n");
 	if (i <= n + 1 && *line)
+	{
+		*line = tab[i];
+		i++;
 		return (1);
+	}
 	free(buff_1);
 	free(tab);
 	return (0);
@@ -96,8 +119,8 @@ int		main(void)
 		return (1);
 	}
 	ft_putchar('\n');
-	ft_putnbr(BUFF_SIZE);
-	ft_putendl(" de buffer");
+	//ft_putnbr(BUFF_SIZE);
+	//ft_putendl(" de buffer");
 	while ((i = get_next_line((int const)fd, &line)) > 0)
 	{
 		ft_putendl(line);

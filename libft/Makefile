@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 04:57:12 by ppoinot           #+#    #+#              #
-#    Updated: 2016/11/09 10:52:49 by ppoinot          ###   ########.fr        #
+#    Updated: 2016/11/09 18:18:20 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,6 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-	make clean
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCLUDES)

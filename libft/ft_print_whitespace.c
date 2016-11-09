@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 09:47:06 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/09 11:26:07 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/09 11:47:34 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	*ft_print_whitespace(char *chaine)
 			ft_putchar(chaine[i]);
 		i++;
 	}
+	ft_putchar('\n');
 	return (NULL);
 }
