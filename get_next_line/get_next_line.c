@@ -6,14 +6,14 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 04:19:25 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/09 21:17:09 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/10 16:40:40 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <sys/types.h>
+/*#include <sys/types.h>
 #include <sys/stat.h>
-#include <fcntl.h>
+#include <fcntl.h>*/
 
 int		nb_de_ligne(char **tab)
 {
@@ -25,7 +25,7 @@ int		nb_de_ligne(char **tab)
 	return (i - 2);
 }
 
-/*void	*debug(char **tableau)
+void	*debug(char **tableau)
 {
 	int		i;
 
@@ -38,7 +38,7 @@ int		nb_de_ligne(char **tab)
 		ft_print_whitespace(tableau[i++]);
 	}
 	return (NULL);
-}*/
+}
 
 char	*lire_un_fichier(int fd)
 {
@@ -56,14 +56,14 @@ char	*lire_un_fichier(int fd)
 			if (!(buff_2 = (char*)malloc(sizeof(char) * BUFF_SIZE))
 					|| (nb_oc_lu = read(fd, buff_2, BUFF_SIZE)) == -1)
 				return (NULL);
-			buff_1 = ft_realloc(buff_1, ft_strlen(buff_1) + nb_oc_lu + 1);
+			buff_1 = ft_realloc(buff_1, ft_strlen(buff_1) + nb_oc_lu);
 			ft_strcat(buff_1, buff_2);
 		}
 		else {
 			if (!(buff_2 = (char*)malloc(sizeof(char) * BUFF_SIZE))
 					|| (nb_oc_lu = read(fd, buff_2, BUFF_SIZE)) == -1)
 				return (NULL);
-			buff_1 = ft_realloc(buff_1, ft_strlen(buff_1) + nb_oc_lu + 1);
+			buff_1 = ft_realloc(buff_1, ft_strlen(buff_1) + nb_oc_lu);
 			ft_strcat(buff_1, buff_2);
 			nb_oc_lu = 0;
 		}
@@ -101,12 +101,12 @@ int		get_next_line(const int fd, char **line)
 		i++;
 		return (1);
 	}
-	free(buff_1);
+//	free(buff_1);
 	free(tab);
 	return (0);
 }
 
-int		main(void)
+/*int		main(void)
 {
 	int		fd;
 	char	*line;
@@ -128,7 +128,8 @@ int		main(void)
 	}
 	close(fd);
 	return (1);
-}
+}*/
+
 /*
    1- allouer un buffer de taille TAILLE
    2- tant que lire un caractère n'atteint pas la fin de fichier et que le 
