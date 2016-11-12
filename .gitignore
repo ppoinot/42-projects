@@ -6,7 +6,7 @@
 # mais suivre lib.a malgré la règle précédente
 #!lib.a
 # ignorer uniquement le fichier TODO à la racine du projet
-./get_next_line/libft
+get_next_line/libft
 moulitest
 # ignorer tous les fichiers dans le répertoire build
 # build/
