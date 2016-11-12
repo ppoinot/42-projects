@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/12 14:24:43 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/12 15:36:18 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-int					get_next_line(const int fd, char **line);
-char				*lire_un_fd(int fd);
-
 typedef struct		s_gnl
 {
 	char		*stce;
 	char		*buff;
 	int			nb;
 }					t_gnl;
+
+int					get_next_line(const int fd, char **line);
+char				*ft_swapping(char *stce, int i);
+char				*ft_copy(t_gnl **gnl, char *line);
+char				*transf(char *stce, char *buff);
+int					initial(t_gnl **gnl);
 
 #endif

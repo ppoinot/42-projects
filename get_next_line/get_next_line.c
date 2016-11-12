@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 09:33:47 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/12 15:19:03 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/12 15:40:15 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ int		initial(t_gnl **gnl)
 		if (!(*gnl = (t_gnl*)malloc(sizeof(t_gnl))))
 			return (0);
 		(*gnl)->nb = 0;
-		if (!((*gnl)->stce = ft_strnew(BUFF_SIZE + 1)))
+		if (!((*gnl)->stce = ft_strnew(BUFF_SIZE + 1))
+				|| !((*gnl)->buff = ft_strnew(BUFF_SIZE + 1)))
 			return (0);
 	}
 	else if ((*gnl)->stce == NULL)
 	{
-		ft_putendl("stce = NULL");
 		if (!((*gnl)->stce = ft_strnew(BUFF_SIZE + 1)))
 			return (0);
 	}
@@ -68,12 +68,11 @@ int		initial(t_gnl **gnl)
 int		get_next_line(const int fd, char **line)
 {
 	static t_gnl	*gnl = NULL;
-	
-	if (!BUFF_SIZE || !line || initial(&gnl))
+
+	if (!BUFF_SIZE || !line || !initial(&gnl))
 		return (-1);
 	while (!(ft_strchr(gnl->stce, '\n')))
 	{
-		ft_putstr(gnl->stce);
 		ft_bzero(gnl->buff, BUFF_SIZE + 1);
 		if ((gnl->nb = read(fd, gnl->buff, BUFF_SIZE)) > 0)
 			gnl->stce = transf(gnl->stce, gnl->buff);
@@ -89,29 +88,6 @@ int		get_next_line(const int fd, char **line)
 		ft_memdel((void**)gnl);
 		return (0);
 	}
-	ft_putstr(gnl->stce);
 	*line = ft_copy(&gnl, *line);
-	return (1);
-}
-
-int		main(void)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	fd = open("test", O_RDONLY);
-	if (fd == -1)
-	{
-		ft_putstr("open() error");
-		return (1);
-	}
-	while ((i = get_next_line((int const)fd, &line)) > 0)
-	{
-		ft_putnbr(i);
-		ft_putendl(line);
-		free(line);
-	}
-	close(fd);
 	return (1);
 }
