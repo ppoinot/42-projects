@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/12 11:05:49 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/12 14:24:43 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-typedef struct		s_object
+int					get_next_line(const int fd, char **line);
+char				*lire_un_fd(int fd);
+
+typedef struct		s_gnl
 {
-	char		*buff_1;
-	int			n;
-}					t_object;
+	char		*stce;
+	char		*buff;
+	int			nb;
+}					t_gnl;
 
 #endif
