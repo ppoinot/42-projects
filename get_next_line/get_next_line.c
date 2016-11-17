@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 09:33:47 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/17 16:55:37 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/17 17:32:34 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ char	*transf(char *stce, char *buff)
 	char	*tmp;
 
 	tmp = ft_strjoin(stce, buff);
-//	free(stce);
+	free(stce);
 	stce = tmp;
-	ft_putendl(stce);
 	return (stce);
 }
 
@@ -81,15 +80,12 @@ int		get_next_line(const int fd, char **line)
 	{
 		ft_bzero(gnl->buff, BUFF_SIZE + 1);
 		if ((gnl->nb = read(fd, gnl->buff, BUFF_SIZE)) > 0)
-		{
 			gnl->stce = transf(gnl->stce, gnl->buff);
-		}
 		else
 			break ;
 	}
 	if (gnl->nb < 0)
 		return (-1);
-//	ft_putendl("TEST1");
 	if (gnl->nb == 0 && gnl->stce[0] == '\0')
 	{
 		*line = NULL;
@@ -101,7 +97,7 @@ int		get_next_line(const int fd, char **line)
 	return (1);
 }
 
-int     main(void)
+/*int     main(void)
 {
 	int     fd;
 	char    *line;
@@ -120,4 +116,4 @@ int     main(void)
 		free (line);
 	}
 	return (1);
-}
+}*/
