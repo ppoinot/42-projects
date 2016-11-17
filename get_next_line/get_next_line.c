@@ -6,11 +6,16 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 09:33:47 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/14 12:03:09 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/17 16:55:37 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
 
 char	*ft_swapping(char *stce, int i)
 {
@@ -41,8 +46,9 @@ char	*transf(char *stce, char *buff)
 	char	*tmp;
 
 	tmp = ft_strjoin(stce, buff);
-	free(stce);
+//	free(stce);
 	stce = tmp;
+	ft_putendl(stce);
 	return (stce);
 }
 
@@ -75,12 +81,15 @@ int		get_next_line(const int fd, char **line)
 	{
 		ft_bzero(gnl->buff, BUFF_SIZE + 1);
 		if ((gnl->nb = read(fd, gnl->buff, BUFF_SIZE)) > 0)
+		{
 			gnl->stce = transf(gnl->stce, gnl->buff);
+		}
 		else
 			break ;
 	}
 	if (gnl->nb < 0)
 		return (-1);
+//	ft_putendl("TEST1");
 	if (gnl->nb == 0 && gnl->stce[0] == '\0')
 	{
 		*line = NULL;
@@ -89,5 +98,26 @@ int		get_next_line(const int fd, char **line)
 		return (0);
 	}
 	*line = ft_copy(&gnl, *line);
+	return (1);
+}
+
+int     main(void)
+{
+	int     fd;
+	char    *line;
+	int		i;
+
+	fd = open("test", O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr("open() error");
+		return (1);
+	}
+	while ((i = get_next_line((int const)fd, &line)) > 0)
+	{
+		ft_putendl("LINE");
+		ft_putendl(line);
+		free (line);
+	}
 	return (1);
 }

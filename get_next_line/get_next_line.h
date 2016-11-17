@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/14 09:44:03 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/17 16:29:53 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define GET_NEXT_LINE_H
 # define BUFF_SIZE 1
 # include "./libft/libft.h"
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
 
 typedef struct		s_gnl
 {
