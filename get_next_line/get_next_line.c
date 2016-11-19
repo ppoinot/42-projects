@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 14:24:49 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/19 12:38:02 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/19 12:51:32 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		get_next_line(const int fd, char **line)
 			return (cleanthis(line, &stce, &buff, i));
 		i[1]++;
 	}
-	if (i [1] == BUFF_SIZE)
+	if (i[1] == BUFF_SIZE)
 		return (get_next_line(fd, line));
 	return (-1);
 }
