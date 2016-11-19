@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 14:24:49 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/19 12:23:11 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/19 12:38:02 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		get_next_line(const int fd, char **line)
 
 	i[0] = 0;
 	i[1] = 0;
-	if (fd < 0 || !line || BUFF_SIZE < 1 || !*line)
+	if (fd < 0 || !line || !*line || BUFF_SIZE < 1)
 		return (-1);
 	while (i[1] < BUFF_SIZE)
 	{
