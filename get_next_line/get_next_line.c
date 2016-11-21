@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 14:24:49 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/19 12:51:32 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/21 11:56:23 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		cleanthis(char **line, char **stce, char **buff, int *i)
 		return (-1);
 	ft_strdel(&*stce);
 	ft_strdel(&*buff);
-	if (i[0] == 0 || i[0] == EOF)
+	if (i[0] == 0)
 		return (0);
 	return (1);
 }
@@ -40,9 +40,9 @@ int		get_next_line(const int fd, char **line)
 		buff = ft_strnew(2);
 		if ((i[0] = read(fd, buff, 1)) < 0)
 			return (-1);
-		if (*buff != '\n' && (i[0] != 0 || i[0] != EOF))
+		if (*buff != '\n' && i[0] != 0)
 			stce = ft_strjoin(stce, buff);
-		if (*buff == '\n' || i[0] == 0 || i[0] == EOF)
+		if (*buff == '\n' || i[0] == 0)
 			return (cleanthis(line, &stce, &buff, i));
 		i[1]++;
 	}
