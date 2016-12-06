@@ -6,11 +6,9 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 00:15:13 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/16 00:15:30 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/24 17:51:25 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_print_alphabet(void)
 {

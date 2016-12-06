@@ -6,13 +6,13 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/13 16:14:58 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/07/13 17:06:29 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/24 18:17:14 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_iterative_factorial(int nb)
 {
-	int	a;
+	int		a;
 
 	a = 1;
 	if (nb > 0 && nb < 13)
@@ -24,12 +24,5 @@ int		ft_iterative_factorial(int nb)
 		}
 		return (a);
 	}
-	if (nb < 0)
-	{
-		return (0);
-	}
-	else
-	{
-		return (1);
-	}
+	return (0);
 }

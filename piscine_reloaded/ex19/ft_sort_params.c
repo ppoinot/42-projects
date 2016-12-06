@@ -6,13 +6,11 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 12:01:55 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/14 13:25:48 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/19 13:02:13 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-
 
 void	ft_putstr(const char *s)
 {

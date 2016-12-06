@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:41:36 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/14 12:05:26 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/24 16:28:38 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	ft_putstr(const char *s)
 {
-	while (*s)
-		write(1, s++, 1);
+	int		i;
+
+	i = 0;
+	while (s[i])
+		ft_putchar(s[i++]);
 }
 
 int		main(int argc, char **argv)
@@ -28,7 +31,7 @@ int		main(int argc, char **argv)
 	while (i < argc)
 	{
 		ft_putstr(argv[i]);
-		write(1, "\n", 1);
+		ft_putchar('\n');
 		i++;
 	}
 	return (0);

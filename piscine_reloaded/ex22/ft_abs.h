@@ -6,13 +6,13 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 14:13:33 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/14 14:13:48 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/19 13:02:57 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
+
 # define FT_ABS_H
 # define ABS(Value) ((Value < 0 ? -(Value) : Value))
 
 #endif
-

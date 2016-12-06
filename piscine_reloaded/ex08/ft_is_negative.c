@@ -6,14 +6,14 @@
 /*   By: ppoinot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/07/09 15:43:01 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/14 12:04:18 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/24 17:58:48 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_is_negative(int n)
 {
 	if (n < 0)
-		write(1, 'N', 1);
+		ft_putchar('N');
 	else
-		write(1, 'P', 1);
+		ft_putchar('P');
 }
