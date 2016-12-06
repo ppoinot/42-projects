@@ -5,48 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/17 14:24:49 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/21 11:56:23 by ppoinot          ###   ########.fr       */
+/*   Created: 2016/11/30 15:39:02 by ppoinot           #+#    #+#             */
+/*   Updated: 2016/12/05 18:18:25 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <fcntl.h>
+#include <stdio.h>
 
-int		cleanthis(char **line, char **stce, char **buff, int *i)
+char	*ft_swapping(char *s, int i)
 {
-	if (!(*line = ft_strdup(*stce)))
-		return (-1);
-	ft_strdel(&*stce);
-	ft_strdel(&*buff);
-	if (i[0] == 0)
-		return (0);
-	return (1);
+	char	*swap;
+
+	swap = ft_strdup(s + i + 1);
+	free(s);
+	return (swap);
+}
+
+t_gnl	*resolve(t_gnl **gnl, char ***line)
+{
+	int		nb;
+
+	if ((*gnl)->ret)
+	{
+		(*gnl)->string = ft_strjoin((*gnl)->string, (*gnl)->buffer);
+		free((*gnl)->buffer);
+		nb = ft_count((*gnl)->string, '\n');
+		if (ft_strchr((*gnl)->string, '\n'))
+		{
+			if (nb < (*gnl)->ret)
+				(*gnl)->string = ft_swapping((*gnl)->string, nb);
+		}
+		**line = ft_strsub((*gnl)->string, 1, nb);
+	}
+	return (*gnl);
 }
 
 int		get_next_line(const int fd, char **line)
 {
-	int				i[2];
-	char			*buff;
-	static char		*stce = NULL;
+	static t_gnl	*gnl = NULL;
 
-	i[0] = 0;
-	i[1] = 0;
-	if (fd < 0 || !line || !*line || BUFF_SIZE < 1)
+	if (BUFF_SIZE < 1 || !line)
 		return (-1);
-	while (i[1] < BUFF_SIZE)
+	if (!(gnl = (t_gnl*)malloc(sizeof(gnl)))
+			|| !(gnl->string = ft_strnew(BUFF_SIZE + 1))
+			|| !(gnl->buffer = ft_strnew(BUFF_SIZE + 1)))
+		return (-1);
+	gnl->ret = 1;
+	while (gnl->ret != 0 && !ft_strchr(gnl->string, '\n'))
 	{
-		if (!stce)
-			stce = ft_strnew(2);
-		buff = ft_strnew(2);
-		if ((i[0] = read(fd, buff, 1)) < 0)
+		if ((gnl->ret = read(fd, gnl->buffer, BUFF_SIZE)) < 0)
 			return (-1);
-		if (*buff != '\n' && i[0] != 0)
-			stce = ft_strjoin(stce, buff);
-		if (*buff == '\n' || i[0] == 0)
-			return (cleanthis(line, &stce, &buff, i));
-		i[1]++;
+		gnl = resolve(&gnl, &line);
 	}
-	if (i[1] == BUFF_SIZE)
-		return (get_next_line(fd, line));
-	return (-1);
+	if (gnl->ret != 0)
+		return (1);
+	free(gnl);
+	return (0);
 }
+
+/*int		main(void)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	fd = open("test", O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr("open() error");
+		return (1);
+	}
+	while ((i = get_next_line((int const)fd, &line)) > 0)
+	{
+		ft_putendl(line);
+		if (ft_strcmp(line, "aaa") == 0)
+			ft_putendl("OK");
+		else
+			ft_putendl("KO");
+		free(line);
+	}
+	close(fd);
+	return (1);
+}*/
