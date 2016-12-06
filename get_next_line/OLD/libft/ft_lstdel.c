@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/06 18:23:56 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/11 03:17:02 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/11 03:19:15 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "./libft/libft.h"
+#include "libft.h"
 
-typedef struct		s_gnl
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
+	t_list		*list;
+	t_list		*next_lst;
 
-int					get_next_line(const int fd, char **line);
-char				*ft_swapping(char *stce, int i);
-char				*ft_copy(t_gnl **gnl, char *line);
-char				*transf(char *stce, char *buff);
-int					initial(t_gnl **gnl);
-
-#endif
+	if (!alst || !del)
+		return ;
+	list = *alst;
+	while (list)
+	{
+		next_lst = list->next;
+		ft_lstdelone(&list, del);
+		list = next_lst;
+	}
+	*alst = NULL;
+}

@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/06 18:23:56 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/10 04:55:23 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/10 04:55:24 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "./libft/libft.h"
+#include "libft.h"
 
-typedef struct		s_gnl
+char	*ft_strnew(size_t size)
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
+	char	*fraiche;
 
-int					get_next_line(const int fd, char **line);
-char				*ft_swapping(char *stce, int i);
-char				*ft_copy(t_gnl **gnl, char *line);
-char				*transf(char *stce, char *buff);
-int					initial(t_gnl **gnl);
-
-#endif
+	fraiche = (char *)ft_memalloc(size + 1);
+	if (!fraiche)
+		return (NULL);
+	fraiche[size + 1] = '\0';
+	return (fraiche);
+}

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/06 18:23:56 by ppoinot          ###   ########.fr       */
+/*   Created: 2016/11/12 13:49:37 by ppoinot           #+#    #+#             */
+/*   Updated: 2016/11/12 13:55:54 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "./libft/libft.h"
+#include "libft.h"
 
-typedef struct		s_gnl
+int		ft_count(char *str, char c)
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
+	int		n;
+	int		i;
 
-int					get_next_line(const int fd, char **line);
-char				*ft_swapping(char *stce, int i);
-char				*ft_copy(t_gnl **gnl, char *line);
-char				*transf(char *stce, char *buff);
-int					initial(t_gnl **gnl);
-
-#endif
+	n = 0;
+	i = 0;
+	if (!str)
+		return (-1);
+	while (str[i] != c && str[i])
+		i++;
+	return (i);
+}

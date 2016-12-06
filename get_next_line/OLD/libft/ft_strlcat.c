@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/06 18:23:56 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/10 04:54:23 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/10 04:54:23 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "./libft/libft.h"
+#include "libft.h"
 
-typedef struct		s_gnl
+size_t	ft_strlcat(char *s1, const char *s2, size_t size)
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
+	size_t	len_dest;
+	size_t	len_src;
+	size_t	size_origin;
 
-int					get_next_line(const int fd, char **line);
-char				*ft_swapping(char *stce, int i);
-char				*ft_copy(t_gnl **gnl, char *line);
-char				*transf(char *stce, char *buff);
-int					initial(t_gnl **gnl);
-
-#endif
+	size_origin = size;
+	len_dest = ft_strlen(s1);
+	len_src = ft_strlen(s2);
+	while (*s1 && size)
+	{
+		s1++;
+		size--;
+	}
+	if (!size)
+		return (size_origin + len_src);
+	while (*s2 && size-- > 1)
+		*s1++ = *s2++;
+	*s1 = '\0';
+	return (len_dest + len_src);
+}

@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/06 18:23:56 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/14 03:59:26 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/14 04:33:15 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "./libft/libft.h"
+#include "libft.h"
 
-typedef struct		s_gnl
+static void	ft_putunbr_fd(unsigned int n, int fd)
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
+	if (n > 9)
+		ft_putunbr_fd((n / 10), fd);
+	n = (n % 10) + '0';
+	write(fd, (unsigned char*)(&n), 1);
+}
 
-int					get_next_line(const int fd, char **line);
-char				*ft_swapping(char *stce, int i);
-char				*ft_copy(t_gnl **gnl, char *line);
-char				*transf(char *stce, char *buff);
-int					initial(t_gnl **gnl);
-
-#endif
+void		ft_putnbr_fd(int n, int fd)
+{
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		ft_putunbr_fd((unsigned int)(-n), fd);
+	}
+	else
+		ft_putunbr_fd((unsigned int)(n), fd);
+}

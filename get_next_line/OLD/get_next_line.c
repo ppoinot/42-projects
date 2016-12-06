@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 09:33:47 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/19 11:36:04 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/12/06 18:20:19 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*ft_swapping(char *stce, int i)
 
 	swap = ft_strdup(stce + i + 1);
 	free(stce);
+//	ft_putendl(swap);
 	return (swap);
 }
 
@@ -41,14 +42,14 @@ char	*ft_copy(t_gnl **gnl, char *line)
 	return (line);
 }
 
-char	*transf(char *stce, char *buff)
+char	*transf(char *str, char *buf)
 {
 	char	*tmp;
 
-	tmp = ft_strjoin(stce, buff);
-	free(stce);
-	stce = tmp;
-	return (stce);
+	tmp = ft_strjoin(str, buf);
+	free(str);
+//	ft_putendl(tmp);
+	return (tmp);
 }
 
 int		initial(t_gnl **gnl)
@@ -74,7 +75,7 @@ int		get_next_line(const int fd, char **line)
 {
 	static t_gnl	*gnl = NULL;
 
-	if (!BUFF_SIZE || !line || !initial(&gnl))
+	if (BUFF_SIZE < 1 || !line || !initial(&gnl))
 		return (-1);
 	while (!(ft_strchr(gnl->stce, '\n')))
 	{
@@ -113,7 +114,8 @@ int		get_next_line(const int fd, char **line)
 	{
 		ft_putendl("LINE");
 		ft_putendl(line);
-		free (line);
+		free(line);
 	}
+	close(fd);
 	return (1);
 }*/
