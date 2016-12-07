@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/07 11:07:20 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/10 04:53:59 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/10 04:54:00 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 5
-# include "./libft/libft.h"
+#include "libft.h"
 
-typedef struct		s_gnl
+void	ft_striter(char *s, void (*f)(char *))
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
-
-int					get_next_line(const int fd, char **line);
-char				*ft_swapping(char *stce, int i);
-char				*ft_copy(t_gnl **gnl, char *line);
-char				*transf(char *stce, char *buff);
-int					initial(t_gnl **gnl);
-
-#endif
+	if (!s || !f)
+		return ;
+	while (*s)
+	{
+		f(s);
+		s++;
+	}
+}

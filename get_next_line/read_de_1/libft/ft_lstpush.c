@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstpush.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/07 11:07:20 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/11 03:35:41 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/11 03:39:03 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 5
-# include "./libft/libft.h"
+#include "libft.h"
 
-typedef struct		s_gnl
+t_list	*ft_lstpush(t_list **alst, t_list *new)
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
+	t_list	*tmp;
 
-int					get_next_line(const int fd, char **line);
-char				*ft_swapping(char *stce, int i);
-char				*ft_copy(t_gnl **gnl, char *line);
-char				*transf(char *stce, char *buff);
-int					initial(t_gnl **gnl);
-
-#endif
+	if (!new)
+		return (NULL);
+	if (!alst || !*alst)
+		return (new);
+	tmp = *alst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	return (new);
+}

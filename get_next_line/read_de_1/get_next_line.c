@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 14:24:49 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/11/24 19:00:23 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/12/07 11:54:33 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		get_next_line(const int fd, char **line)
 		if (!stce)
 			stce = ft_strnew(2);
 		buff = ft_strnew(2);
-		if ((i[0] = read(fd, buff, 1)) < 0)
+		if ((i[0] = ft_read(fd, buff, BUFF_SIZE)) < 0)
 			return (-1);
 		if (*buff != '\n' && i[0] != 0)
 			stce = ft_strjoin(stce, buff);
@@ -51,7 +51,7 @@ int		get_next_line(const int fd, char **line)
 	return (-1);
 }
 
-int     main(int argc, char **argv)
+/*int     main(int argc, char **argv)
 {
 	int     fd;
 	char    *line;
@@ -70,4 +70,4 @@ int     main(int argc, char **argv)
 		free (line);
 	}
 	return (1);
-}
+}*/

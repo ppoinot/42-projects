@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:00:42 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/07 11:07:20 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/10 04:56:03 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/14 03:22:23 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 5
-# include "./libft/libft.h"
+#include "libft.h"
 
-typedef struct		s_gnl
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
+	char	*troncon;
+	int		i;
 
-int					get_next_line(const int fd, char **line);
-char				*ft_swapping(char *stce, int i);
-char				*ft_copy(t_gnl **gnl, char *line);
-char				*transf(char *stce, char *buff);
-int					initial(t_gnl **gnl);
-
-#endif
+	i = 0;
+	troncon = (char *)malloc(sizeof(char) * (len + 1));
+	if (!troncon)
+		return (NULL);
+	troncon[len] = '\0';
+	while (s[start] && len--)
+		troncon[i++] = s[start++];
+	return (troncon);
+}
