@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 04:55:23 by ppoinot           #+#    #+#             */
-/*   Updated: 2015/12/10 04:55:24 by ppoinot          ###   ########.fr       */
+/*   Created: 2015/12/10 04:54:30 by ppoinot           #+#    #+#             */
+/*   Updated: 2015/12/14 00:27:42 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*ft_strnew(size_t size)
 {
-	char	*fraiche;
+	char	*str;
 
-	fraiche = (char *)ft_memalloc(size + 1);
-	if (!fraiche)
+	str = (char*)malloc(sizeof(char) * size + 1);
+	if (str == NULL)
 		return (NULL);
-	fraiche[size + 1] = '\0';
-	return (fraiche);
+	ft_bzero(str, size + 1);
+	return (str);
 }
