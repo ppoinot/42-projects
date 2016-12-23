@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 04:56:41 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/07 11:51:36 by ppoinot          ###   ########.fr       */
+/*   Updated: 2016/11/12 13:53:35 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int					ft_count(char *str, char c);
 
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-int					ft_read(int fd, char *str, size_t yolo);
 
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
