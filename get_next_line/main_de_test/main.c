@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,18 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 1
-# include "./libft/libft.h"
+#include "get_next_line.h"
 
-typedef struct		s_gnl
+#include <sys/types.h>
+#include <sys/uio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
+
+int     main(void)
 {
-	char			*stce;
-	char			*buff;
-	int				nb;
-}					t_gnl;
+	int     fd;
+	char    *line;
+	int		i;
 
-int					get_next_line(const int fd, char **line);
-
-#endif
+	fd = open("test", O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr("open() error");
+		return (1);
+	}
+	while ((i = get_next_line((int const)fd, &line)) > 0)
+	{
+		ft_putendl("LINE");
+		ft_putendl(line);
+		free(line);
+	}
+	close(fd);
+	return (1);
+}
