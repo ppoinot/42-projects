@@ -38,7 +38,7 @@ int		get_next_line(const int fd, char **line)
 		if (!stce)
 			stce = ft_strnew(2);
 		buff = ft_strnew(2);
-		if ((i[0] = ft_read(fd, buff, BUFF_SIZE)) < 0)
+		if ((i[0] = read(fd, buff, BUFF_SIZE)) < 0)
 			return (-1);
 		if (*buff != '\n' && i[0] != 0)
 			stce = ft_strjoin(stce, buff);
@@ -50,24 +50,3 @@ int		get_next_line(const int fd, char **line)
 		return (get_next_line(fd, line));
 	return (-1);
 }
-
-/*int     main(int argc, char **argv)
-{
-	int     fd;
-	char    *line;
-	int		i;
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-	{
-		ft_putstr("open() error");
-		return (1);
-	}
-	while ((i = get_next_line((int const)fd, &line)) > 0)
-	{
-		ft_putendl("LINE");
-		ft_putendl(line);
-		free (line);
-	}
-	return (1);
-}*/

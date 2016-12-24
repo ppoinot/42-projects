@@ -35,8 +35,7 @@ char			*ft_itoa(int n)
 		u_nbr = -n;
 		len++;
 	}
-	str = (char*)malloc(sizeof(char) * len + 1);
-	if (!str)
+	if (!(str = (char*)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	str[len] = '\0';
 	str[--len] = u_nbr % 10 + '0';

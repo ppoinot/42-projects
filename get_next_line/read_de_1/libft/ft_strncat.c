@@ -18,8 +18,9 @@ char	*ft_strncat(char *dest, const char *src, size_t n)
 
 	dest_start = dest;
 	while (*dest)
-		dest++;
-	while (n--)
+		++dest;
+	++n;
+	while (--n && *src)
 		*dest++ = *src++;
 	*dest = '\0';
 	return (dest_start);
