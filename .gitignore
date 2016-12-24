@@ -3,6 +3,7 @@
 *.out
 *.o
 *.a
+fillit/fillit
 # mais suivre lib.a malgré la règle précédente
 #!lib.a
 # ignorer uniquement le fichier TODO à la racine du projet
