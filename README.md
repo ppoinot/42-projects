@@ -1,8 +1,9 @@
 # 42-projects
 My projects to 42 - By Paul-Aurian POINOT
 
-| Projects	| Group	| Score		|
-| ------------- |:-------------:| -----:|
-| 42 commandements	| Solo	| 100%	|
-| Piscine Reaload	| Solo	| 0%	|
-| Libft				| Solo	| 116%	|
+| Projects	| Group	| Score		| Up-to-date|
+| ------------- |:-------------:| -----:|:---:|
+| 42 commandements	| Solo	| 100%	| Yes	|
+| Piscine Reaload	| Solo	| 0%	| *No*	|
+| Libft				| Solo	| 116%	| Yes	|
+| Get Next Line		| Solo	| 68%	| *No*	|
