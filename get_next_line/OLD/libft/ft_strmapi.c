@@ -20,8 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = -1;
 	if (!s || !f)
 		return (NULL);
-	fraiche = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!fraiche)
+	if (!(fraiche = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (NULL);
 	fraiche[ft_strlen(s)] = '\0';
 	while (s[++i])

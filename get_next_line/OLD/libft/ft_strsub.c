@@ -17,9 +17,10 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	char	*troncon;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
-	troncon = (char *)malloc(sizeof(char) * (len + 1));
-	if (!troncon)
+	if (!(troncon = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	troncon[len] = '\0';
 	while (s[start] && len--)

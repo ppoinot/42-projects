@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_compteur(char const *s, char c)
+static int	ft_counter(char const *s, char c)
 {
 	int		n;
 	int		index;
@@ -34,15 +34,14 @@ static int	ft_compteur(char const *s, char c)
 char		**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
-	int		nbr;
 	int		i;
 	int		n;
 
+	if (!s || !c)
+		return (NULL);
 	i = 0;
 	n = 0;
-	nbr = ft_compteur(s, c);
-	tab = (char **)malloc(sizeof(char *) * nbr + 1);
-	if (!tab)
+	if (!(tab = (char **)malloc(sizeof(char *) * ft_counter(s, c) + 1)))
 		return (NULL);
 	while (*s)
 	{

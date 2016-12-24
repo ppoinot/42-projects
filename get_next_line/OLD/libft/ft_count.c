@@ -14,10 +14,8 @@
 
 int		ft_count(char *str, char c)
 {
-	int		n;
 	int		i;
 
-	n = 0;
 	i = 0;
 	if (!str)
 		return (-1);

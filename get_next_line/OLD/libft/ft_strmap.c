@@ -18,8 +18,9 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char	*fraiche;
 
 	i = -1;
-	fraiche = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!fraiche)
+	if (!s)
+		return (NULL);
+	if (!(fraiche = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (NULL);
 	fraiche[ft_strlen(s)] = '\0';
 	while (s[++i])
