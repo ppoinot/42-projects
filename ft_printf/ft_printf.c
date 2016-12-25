@@ -20,11 +20,11 @@ int		ft_printf(char *format, ...)
 
 	if (!format)
 	{
-		ft_putendl("First parameter is NULL.")
-		return ( -1);
+		ft_putendl("First parameter is NULL. Please retry with a string.");
+		return (-1);
 	}
 	format_cpy = ft_strdup(format);
-	if (!(list = (t_info*)mallloc(sizeof(t_info))))
+	if (!(list = (t_info*)malloc(sizeof(t_info))))
 		ft_putendl_fd("Insufficient storage space is available.", -1);
 	va_start(ap, format);
 	list->nb_c_written = 0;

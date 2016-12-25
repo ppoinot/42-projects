@@ -12,11 +12,12 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# include "../libft/libft.h"
 # include <stdarg.h>
 
 typedef struct		s_info
 {
-	int				nb_c_wrtitten;
+	int				nb_c_written;
 	int				nb_c_needed;
 	char			*tmp;
 	char			*converted_string;
