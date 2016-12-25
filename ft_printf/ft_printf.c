@@ -14,11 +14,26 @@
 
 int		ft_printf(char *format, ...)
 {
+	va_list		ap;
+	char		*format_cpy;
+	t_info		*list;
+
 	if (!format)
 	{
-		ft_putendl("First parameter is NULL, please don't do this.")
+		ft_putendl("First parameter is NULL.")
 		return ( -1);
 	}
-	
+	format_cpy = ft_strdup(format);
+	if (!(list = (t_info*)mallloc(sizeof(t_info))))
+		ft_putendl_fd("Insufficient storage space is available.", -1);
+	va_start(ap, format);
+	list->nb_c_written = 0;
+	list->nb_c_needed = 0;
+	list->tmp = NULL;
+	list->converted_string = NULL;
+	// creation d'une fonction qui va lire va_list *ap
+	free(list);
+	va_end(ap);
+	free(format_cpy);
 	return (0);
 }

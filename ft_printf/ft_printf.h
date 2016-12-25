@@ -12,19 +12,22 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# include <stdarg.h>
 
-typedef struct		s_color
+typedef struct		s_info
 {
-	struct s_color *next;
-}					t_color;
-
-typedef struct		s_arg
-{
-	int		i;
-	char	arg;
-	struct s_arg *next;
-}					t_arg;
+	int				nb_c_wrtitten;
+	int				nb_c_needed;
+	char			*tmp;
+	char			*converted_string;
+}					t_info;
 
 int		ft_printf(char *format, ...);
+
+/*
+***	void va_start(va_list ap, last); 
+***	type va_arg(va_list ap, type); 
+***	void va_end(va_list ap);
+*/
 
 #endif
