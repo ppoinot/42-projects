@@ -7,5 +7,5 @@ My projects to 42 - By Paul-Aurian POINOT
 | Piscine Reaload	| Solo			| 0%	| **No**	|
 | Libft				| Solo			| 116%	| Yes		|
 | Fillit			| **vcharles**	| 100%	| Yes		|
-| Get Next Line		| Solo			| 68%	| **No**	|
+| Get Next Line		| Solo			| 106%	| Yes		|
 | ft_printf			| Solo			| 0%	| Yes		|

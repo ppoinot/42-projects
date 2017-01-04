@@ -6,7 +6,7 @@
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/16 15:39:02 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/16 18:18:25 by ppoinot          ###   ########.fr       */
+/*   Updated: 2017/01/04 11:32:26 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_printf(char *format, ...)
 
 	if (!format)
 	{
-		ft_putendl("First parameter is NULL. Please retry with a string.");
+		ft_putendl("First parameter is NULL. Please don't do this.");
 		return (-1);
 	}
 	format_cpy = ft_strdup(format);
