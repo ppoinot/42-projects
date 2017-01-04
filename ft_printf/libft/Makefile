@@ -6,7 +6,7 @@
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 04:57:12 by ppoinot           #+#    #+#              #
-#    Updated: 2016/11/12 13:56:53 by ppoinot          ###   ########.fr        #
+#    Updated: 2017/01/04 15:24:47 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,8 @@ SRC = ft_atoi.c \
 	  ft_nbocc.c \
 	  ft_realloc.c \
 	  ft_print_whitespace.c \
-	  ft_count.c
+	  ft_count.c \
+	  get_next_line.c
 
 all : $(NAME)
 
