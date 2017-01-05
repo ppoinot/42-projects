@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_flags.c                                       :+:      :+:    :+:   */
+/*   ft_printf_checkflag.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/25 19:58:00 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/25 20:42:21 by ppoinot          ###   ########.fr       */
+/*   Created: 2016/12/16 15:39:02 by ppoinot           #+#    #+#             */
+/*   Updated: 2017/01/04 11:32:26 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flags		init_flags(void)
+
+
+char	*ft_printf_checkflag(char *str, va_list *aprtf, t_list *list)
 {
-	t_flags		current_flag;
-	
-	if (!(current_flag = (t_flags*)malloc(sizeof(t_flags))))
-		return(NULL);
-	current_flag->c = 0;
-	return (current_flags)
+	while (is_a_good_flag(str))
+	{}
+	return (str);
 }
