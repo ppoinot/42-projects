@@ -8,4 +8,4 @@ My projects to 42 - By Paul-Aurian POINOT
 | Libft				| Solo			| 116%	| Yes		|
 | Fillit			| **vcharles**	| 100%	| Yes		|
 | Get Next Line		| Solo			| 106%	| Yes		|
-| ft_printf			| Solo			| 0%	| Yes		|
+| ft_printf			| Solo			| 0%	| **Current**	|
