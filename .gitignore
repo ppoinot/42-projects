@@ -5,6 +5,7 @@
 *.o
 *.a
 fillit/fillit
+ft_printf/main.c
 
 # mais suivre lib.a malgré la règle précédente
 #!lib.a
