@@ -12,12 +12,13 @@
 
 #include "ft_printf.h"
 
-t_flags		init_flags(void)
+t_flags		*init_flags(void)
 {
-	t_flags		current_flag;
+	t_flags		*current_flag;
 	
 	if (!(current_flag = (t_flags*)malloc(sizeof(t_flags))))
 		return(NULL);
-	current_flag->c = 0;
-	return (current_flags)
+	current_flag->type = 0;
+	current_flag->lenth = 0;
+	return (current_flag);
 }

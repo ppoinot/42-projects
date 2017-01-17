@@ -32,8 +32,7 @@ int		ft_printf(char *format, ...)
 	list->nb_c_needed = 0;
 	list->tmp = NULL;
 	list->converted_string = NULL;
-	// creation d'une fonction inscribe qui va lire va_list *ap
-	nb = inscribe(format_cpy, aprtf, list);
+	nb = inscribe(format_cpy, &aprtf, list);
 	write(1, list->converted_string, nb);
 	free(list);
 	va_end(aprtf);

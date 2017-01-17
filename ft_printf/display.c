@@ -12,19 +12,32 @@
 
 #include "ft_printf.h"
 
-char	*flag_found(char *str, va_list *aprtf, t_list *list)
+void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list)
+{
+	if (is_a_conversion_specifier(flag->type))
+	{
+		/*if (is_an_alphabetic_flag(flag->type))
+			// display_alpha_var(flag, aprtf, list);
+		else
+			//display_numeric_var(flag, aprtf, list);*/
+	}
+}
+
+char	*flag_found(char *str, va_list *aprtf, t_info *list)
 {
 	t_flags		*flag;
 
 	flag = init_flags();
-	str = ft_printf_checkflag(str, aprtf, list)
+	str = ft_printf_checkflag(str, aprtf, list, *flag);
+	if (flag->type)
+		//print_final(flag, aprtf, list);
 	free(flag);
 	return (str);
 }
 
-int		display(char *string, va_list *aprtf, t_info *list)
+int		inscribe(char *string, va_list *aprtf, t_info *list)
 {
-	while (*string != '/0')
+	while (*string != '\0')
 	{
 		if (*string == '%')
 			string = flag_found(++string, aprtf, list);
