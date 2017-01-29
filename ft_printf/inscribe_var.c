@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_flags.c                                        :+:      :+:    :+:   */
+/*   inscribe_var.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/16 03:19:22 by ppoinot           #+#    #+#             */
-/*   Updated: 2016/12/16 03:00:10 by ppoinot          ###   ########.fr       */
+/*   Created: 2017/01/05 17:07:00 by ppoinot           #+#    #+#             */
+/*   Updated: 2017/01/17 18:04:04 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*get_lenth_modifier(t_flags *flag, char *str)
+void	inscribe_alpha_var(t_flags *flag, va_list *aprtf, t_info *list)
 {
-	flag->lenth = *str;
-	return (str++);
-}
+	char	*cur_arg;
 
-char	*get_conversion_specifier(t_flags *flag, char *str)
-{
-	flag->conv_spe = *str;
-	return (str++);
+	cur_arg = va_arg(*aprtf, char*);
+	while (!cur_arg)
+		list->converted_string[list->nb_c_written++] = *cur_arg++;
+	return ;
 }

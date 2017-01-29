@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/16 03:19:22 by ppoinot           #+#    #+#             */
+/*   Created: 2017/01/05 14:53:22 by ppoinot           #+#    #+#             */
 /*   Updated: 2016/12/16 03:00:10 by ppoinot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -14,18 +14,20 @@
 # define FT_PRINTF_H
 # include "../libft/libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 
 typedef struct		s_info
 {
 	int				nb_c_written;
 	int				nb_c_needed;
+	int 			i;
 	char			*tmp;
 	char			*converted_string;
 }					t_info;
 
 typedef struct 		s_flags
 {
-	char			type;
+	char			conv_spe;
 	char			lenth;
 	
 }					t_flags;
@@ -45,13 +47,14 @@ char	*ft_printf_checkflag(char *str, va_list *aprtf, t_info *list,
 
 void	print_final(t_flags *flag, va_list *aprtf, t_list *list);
 
+void	inscribe_alpha_var(t_flags *flag, va_list *aprtf, t_info *list);
 void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list);
 char	*flag_found(char *str, va_list *aprtf, t_info *list);
 int		inscribe(char *string, va_list *aprintf, t_info *list);
 
 int		ft_printf(char *format, ...);
 
-/*
+/*get_type
 ***	void va_start(va_list ap, last); 
 ***	type va_arg(va_list ap, type); 
 ***	void va_end(va_list ap);

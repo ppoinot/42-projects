@@ -23,6 +23,7 @@ static	t_info	*init_info_list(void)
 	}
 	new_list->nb_c_written = 0;
 	new_list->nb_c_needed = 0;
+	new_list->i = 0;
 	new_list->tmp = NULL;
 	new_list->converted_string = NULL;
 	return (new_list);
@@ -35,7 +36,7 @@ int		ft_printf(char *format, ...)
 	t_info		*list;
 	int 		ret;
 
-	if (!format)
+	if (!format || *format == 0)
 	{
 		ft_putendl("First parameter is NULL. Please don't do this.");
 		return (-1);
@@ -45,9 +46,9 @@ int		ft_printf(char *format, ...)
 	if (!(list = init_info_list()))
 		return (-1);
 	ret = inscribe(format_cpy, &aprtf, list);
-	write(1, list->converted_string, nb);
+	write(1, list->converted_string, ret);
 	free(list);
 	va_end(aprtf);
 	free(format_cpy);
-	return (0);
+	return (ret);
 }

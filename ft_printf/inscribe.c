@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inscribe .c                                        :+:      :+:    :+:   */
+/*   inscribe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,20 +17,21 @@ void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list)
 	if (is_a_conversion_specifier(flag->conv_spe))
 	{
 		if (is_an_alphabetic_flag(flag->conv_spe))
-			display_alpha_var(flag, aprtf, list);
+			inscribe_alpha_var(flag, aprtf, list);
 		else
 			//display_numeric_var(flag, aprtf, list);*/ 
+			return ;
 	}
 }
 
-char	*add_to_format(char *str)
+/*char	*add_to_format(char *str)
 {
 	char	*cur_arg;
 
 	cur_arg = va_arg(aprtf, char*);
 	str = ft_printf_strjoin();
 	return (str);
-}
+}*/
 
 char	*flag_found(char *str, va_list *aprtf, t_info *list)
 {
@@ -46,14 +47,20 @@ char	*flag_found(char *str, va_list *aprtf, t_info *list)
 
 int		inscribe(char *string, va_list *aprtf, t_info *list)
 {
+	if (!(list->converted_string = ft_memalloc(50)))
+		return (0);
 	while (*string != '\0')
 	{
 		if (*string == '%')
 			string = flag_found(++string, aprtf, list);
+		//realloc list->converted_string pour ajouter le cur_arg;
 		else
 		{
+			//printf("%c\n", *string);
+			list->converted_string[list->nb_c_written++] = *string;
 			string++;
 		}
 	}
+	list->converted_string[list->nb_c_written] = '\0';
 	return (list->nb_c_written);
 }
