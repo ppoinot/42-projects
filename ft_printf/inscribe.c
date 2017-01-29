@@ -38,7 +38,7 @@ char	*flag_found(char *str, va_list *aprtf, t_info *list)
 	t_flags		*flag;
 
 	flag = init_flags();
-	str = ft_printf_checkflag(str, aprtf, list, *flag);
+	str = ft_printf_checkflag(str, aprtf, list, flag);
 	if (flag->conv_spe)
 		inscribe_final(flag, aprtf, list);
 	free(flag);

@@ -43,7 +43,7 @@ char	*get_lenth_modifier(t_flags *flag, char *str);
 char	*get_conversion_specifier(t_flags *flag, char *str);
 
 char	*ft_printf_checkflag(char *str, va_list *aprtf, t_info *list,
-		t_flags flag);
+		t_flags *flag);
 
 void	print_final(t_flags *flag, va_list *aprtf, t_list *list);
 
