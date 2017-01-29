@@ -18,7 +18,7 @@ t_flags		*init_flags(void)
 	
 	if (!(current_flag = (t_flags*)malloc(sizeof(t_flags))))
 		return(NULL);
-	current_flag->type = 0;
+	current_flag->conv_spe = 0;
 	current_flag->lenth = 0;
 	return (current_flag);
 }
