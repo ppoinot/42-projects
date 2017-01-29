@@ -12,12 +12,28 @@
 
 #include "ft_printf.h"
 
+static	t_info	*init_info_list(void)
+{
+	t_info		*new_list;
+
+	if (!(new_list = (t_info*)malloc(sizeof(t_info))))
+	{
+		ft_putendl("Insufficient storage space is available.");
+		return (NULL);
+	}
+	new_list->nb_c_written = 0;
+	new_list->nb_c_needed = 0;
+	new_list->tmp = NULL;
+	new_list->converted_string = NULL;
+	return (new_list);
+}
+
 int		ft_printf(char *format, ...)
 {
 	va_list		aprtf;
 	char		*format_cpy;
 	t_info		*list;
-	int 		nb;
+	int 		ret;
 
 	if (!format)
 	{
@@ -25,14 +41,10 @@ int		ft_printf(char *format, ...)
 		return (-1);
 	}
 	format_cpy = ft_strdup(format);
-	if (!(list = (t_info*)malloc(sizeof(t_info))))
-		ft_putendl_fd("Insufficient storage space is available.", -1);
 	va_start(aprtf, format);
-	list->nb_c_written = 0;
-	list->nb_c_needed = 0;
-	list->tmp = NULL;
-	list->converted_string = NULL;
-	nb = inscribe(format_cpy, &aprtf, list);
+	if (!(list = init_info_list()))
+		return (-1);
+	ret = inscribe(format_cpy, &aprtf, list);
 	write(1, list->converted_string, nb);
 	free(list);
 	va_end(aprtf);
