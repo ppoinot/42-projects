@@ -46,7 +46,13 @@ char	*ft_printf_checkflag(char *str, t_flags *flag);
 
 void	print_final(t_flags *flag, va_list *aprtf, t_list *list);
 
+void	inscribe_c_var(va_list *aprtf, t_info *list);
+void	inscribe_s_var(va_list *aprtf, t_info *list);
+void	inscribe_di_var(va_list *aprtf, t_info *list);
+
 void	select_c_s_or_hash(t_flags *flag, va_list *aprtf, t_info *list);
+void	select_di_ouxX_eE_fF_gG_aA(t_flags *flag, va_list *aprtf, t_info *list);
+
 void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list);
 char	*flag_found(char *str, va_list *aprtf, t_info *list);
 int		inscribe(char *string, va_list *aprintf, t_info *list);

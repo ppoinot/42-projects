@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	inscribe_c_var(va_list *aprtf, t_info *list)
+void	inscribe_c_var(va_list *aprtf, t_info *list)
 {
 	int		cur_arg;
 
@@ -23,7 +23,7 @@ static void	inscribe_c_var(va_list *aprtf, t_info *list)
 	return ;
 }
 
-static void	inscribe_s_var(va_list *aprtf, t_info *list)
+void	inscribe_s_var(va_list *aprtf, t_info *list)
 {
 	char	*cur_arg;
 	int 	i;
@@ -42,16 +42,23 @@ static void	inscribe_s_var(va_list *aprtf, t_info *list)
 	return ;
 }
 
-void	select_c_s_or_hash(t_flags *flag, va_list *aprtf, t_info *list)
+void	inscribe_di_var(va_list *aprtf, t_info *list)
 {
-	if (flag->conv_spe == 'c')
-		inscribe_c_var(aprtf, list);
-	else if (flag->conv_spe == 's')
-		inscribe_s_var(aprtf, list);
-	else
+	int		cur_arg_int;
+	char	*cur_arg_string;
+	int 	i;
+	int 	y;
+
+	cur_arg_int = va_arg(*aprtf, int);
+	cur_arg_string = ft_itoa(cur_arg_int);
+	i = ft_strlen(cur_arg_string);
+	y = 0;
+	list->converted_string = ft_realloc(list->converted_string, 
+				ft_strlen(list->converted_string) + i);
+	while (y < i)
 	{
-		list->converted_string = ft_realloc(list->converted_string,
-			ft_strlen(list->converted_string) + 1);
-		list->converted_string[list->nb_c_written++] = '%';
+		list->converted_string[list->nb_c_written++] = cur_arg_string[y];
+		y++;
 	}
+	return ;
 }
