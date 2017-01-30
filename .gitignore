@@ -6,6 +6,8 @@
 *.a
 fillit/fillit
 ft_printf/main.c
+ft_printf/ft_printf
+ft_printf/Makefile
 
 # mais suivre lib.a malgré la règle précédente
 #!lib.a
