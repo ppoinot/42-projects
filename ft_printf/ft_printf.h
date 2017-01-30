@@ -47,7 +47,7 @@ char	*ft_printf_checkflag(char *str, va_list *aprtf, t_info *list,
 
 void	print_final(t_flags *flag, va_list *aprtf, t_list *list);
 
-void	inscribe_alpha_var(t_flags *flag, va_list *aprtf, t_info *list);
+void	select_c_s_or_hash(t_flags *flag, va_list *aprtf, t_info *list);
 void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list);
 char	*flag_found(char *str, va_list *aprtf, t_info *list);
 int		inscribe(char *string, va_list *aprintf, t_info *list);

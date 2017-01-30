@@ -17,21 +17,12 @@ void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list)
 	if (is_a_conversion_specifier(flag->conv_spe))
 	{
 		if (is_an_alphabetic_flag(flag->conv_spe))
-			inscribe_alpha_var(flag, aprtf, list);
+			select_c_s_or_hash(flag, aprtf, list);
 		else
-			//display_numeric_var(flag, aprtf, list);*/ 
+			//select_di_ouxX_eE_fF_gG_aA(flag, aprtf, list);
 			return ;
 	}
 }
-
-/*char	*add_to_format(char *str)
-{
-	char	*cur_arg;
-
-	cur_arg = va_arg(aprtf, char*);
-	str = ft_printf_strjoin();
-	return (str);
-}*/
 
 char	*flag_found(char *str, va_list *aprtf, t_info *list)
 {
@@ -61,6 +52,6 @@ int		inscribe(char *string, va_list *aprtf, t_info *list)
 		}
 		string++;
 	}
-	list->converted_string[list->nb_c_written] = '\0';
+	list->converted_string[list->nb_c_written++] = '\0';
 	return (list->nb_c_written);
 }
