@@ -52,19 +52,14 @@ int		inscribe(char *string, va_list *aprtf, t_info *list)
 	while (*string != '\0')
 	{
 		if (*string == '%')
-		{
 			string = flag_found(++string, aprtf, list);
-			string++;
-		}
-		//realloc list->converted_string pour ajouter le cur_arg;
 		else
 		{
 			list->converted_string = ft_realloc(list->converted_string, 
 				ft_strlen(list->converted_string) + 1);
-			//printf("%c\n", *string);
 			list->converted_string[list->nb_c_written++] = *string;
-			string++;
 		}
+		string++;
 	}
 	list->converted_string[list->nb_c_written] = '\0';
 	return (list->nb_c_written);
