@@ -47,7 +47,7 @@ char	*flag_found(char *str, va_list *aprtf, t_info *list)
 
 int		inscribe(char *string, va_list *aprtf, t_info *list)
 {
-	if (!(list->converted_string = ft_memalloc(50)))
+	if (!(list->converted_string = ft_memalloc(1)))
 		return (0);
 	while (*string != '\0')
 	{
@@ -59,6 +59,8 @@ int		inscribe(char *string, va_list *aprtf, t_info *list)
 		//realloc list->converted_string pour ajouter le cur_arg;
 		else
 		{
+			list->converted_string = ft_realloc(list->converted_string, 
+				ft_strlen(list->converted_string) + 1);
 			//printf("%c\n", *string);
 			list->converted_string[list->nb_c_written++] = *string;
 			string++;
