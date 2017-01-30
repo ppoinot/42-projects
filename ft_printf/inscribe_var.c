@@ -16,13 +16,15 @@ void	inscribe_alpha_var(t_flags *flag, va_list *aprtf, t_info *list)
 {
 	char	*cur_arg;
 	int 	i;
+	int		y;
 
 	cur_arg = va_arg(*aprtf, char*);
-	//bus error car je lis apres cur_arg
-	while (cur_arg)
+	i = ft_strlen(cur_arg);
+	y = 0;
+	while (y < i)
 	{
-		list->converted_string[list->nb_c_written++] = *cur_arg;
-		cur_arg++;
+		list->converted_string[list->nb_c_written++] = cur_arg[y];
+		y++;
 	}
 	return ;
 }

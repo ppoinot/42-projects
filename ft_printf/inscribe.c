@@ -52,7 +52,10 @@ int		inscribe(char *string, va_list *aprtf, t_info *list)
 	while (*string != '\0')
 	{
 		if (*string == '%')
+		{
 			string = flag_found(++string, aprtf, list);
+			string++;
+		}
 		//realloc list->converted_string pour ajouter le cur_arg;
 		else
 		{
