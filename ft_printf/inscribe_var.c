@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	inscribe_c_var(t_flags *flag, va_list *aprtf, t_info *list)
+static void	inscribe_c_var(va_list *aprtf, t_info *list)
 {
 	int		cur_arg;
 
@@ -23,7 +23,7 @@ static void	inscribe_c_var(t_flags *flag, va_list *aprtf, t_info *list)
 	return ;
 }
 
-static void	inscribe_s_var(t_flags *flag, va_list *aprtf, t_info *list)
+static void	inscribe_s_var(va_list *aprtf, t_info *list)
 {
 	char	*cur_arg;
 	int 	i;
@@ -45,9 +45,9 @@ static void	inscribe_s_var(t_flags *flag, va_list *aprtf, t_info *list)
 void	select_c_s_or_hash(t_flags *flag, va_list *aprtf, t_info *list)
 {
 	if (flag->conv_spe == 'c')
-		inscribe_c_var(flag, aprtf, list);
+		inscribe_c_var(aprtf, list);
 	else if (flag->conv_spe == 's')
-		inscribe_s_var(flag, aprtf, list);
+		inscribe_s_var(aprtf, list);
 	else
 	{
 		list->converted_string = ft_realloc(list->converted_string,

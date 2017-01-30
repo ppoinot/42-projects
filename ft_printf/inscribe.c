@@ -29,7 +29,7 @@ char	*flag_found(char *str, va_list *aprtf, t_info *list)
 	t_flags		*flag;
 
 	flag = init_flags();
-	str = ft_printf_checkflag(str, aprtf, list, flag);
+	str = ft_printf_checkflag(str, flag);
 	if (flag->conv_spe)
 		inscribe_final(flag, aprtf, list);
 	free(flag);
@@ -52,6 +52,6 @@ int		inscribe(char *string, va_list *aprtf, t_info *list)
 		}
 		string++;
 	}
-	list->converted_string[list->nb_c_written++] = '\0';
+	list->converted_string[list->nb_c_written] = '\0';
 	return (list->nb_c_written);
 }

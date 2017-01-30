@@ -12,8 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*ft_printf_checkflag(char *str, va_list *aprtf, t_info *list,
-		t_flags *flag)
+char	*ft_printf_checkflag(char *str, t_flags *flag)
 {
 	while (is_a_good_flag(str) && (flag->conv_spe == 0))
 	{
