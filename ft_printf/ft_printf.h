@@ -30,8 +30,11 @@ typedef struct 		s_flags
 {
 	char			conv_spe;
 	char			lenth;
+	int 			precision;
 	
 }					t_flags;
+
+char	*is_there_precision(char *str, t_flags *flag);
 
 int 	is_an_alphabetic_flag(char c);
 int		is_a_conversion_specifier(char c);
@@ -49,8 +52,8 @@ void	print_final(t_flags *flag, va_list *aprtf, t_list *list);
 
 void	inscribe_c_var(va_list *aprtf, t_info *list);
 void	inscribe_C_var(va_list *aprtf, t_info *list);
-void	inscribe_s_var(va_list *aprtf, t_info *list);
-void	inscribe_S_var(va_list *aprtf, t_info *list);
+void	inscribe_s_var(va_list *aprtf, t_info *list, t_flags *flag);
+void	inscribe_S_var(va_list *aprtf, t_info *list, t_flags *flag);
 void	inscribe_di_var(va_list *aprtf, t_info *list);
 
 void	select_cC_sS_or_hash(t_flags *flag, va_list *aprtf, t_info *list);

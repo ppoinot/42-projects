@@ -20,5 +20,6 @@ t_flags		*init_flags(void)
 		return(NULL);
 	current_flag->conv_spe = 0;
 	current_flag->lenth = 0;
+	current_flag->precision = 0;
 	return (current_flag);
 }

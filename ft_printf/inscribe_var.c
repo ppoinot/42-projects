@@ -34,14 +34,17 @@ void	inscribe_C_var(va_list *aprtf, t_info *list)
 	return ;
 }
 
-void	inscribe_s_var(va_list *aprtf, t_info *list)
+void	inscribe_s_var(va_list *aprtf, t_info *list, t_flags *flag)
 {
 	char	*cur_arg;
 	int 	i;
 	int		y;
 
 	cur_arg = va_arg(*aprtf, char*);
-	i = ft_strlen(cur_arg);
+	if (flag->precision && flag->precision <= (int)ft_strlen(cur_arg))
+		i = flag->precision;
+	else
+		i = ft_strlen(cur_arg);
 	y = 0;
 	list->converted_string = ft_realloc(list->converted_string, 
 				ft_strlen(list->converted_string) + i);
@@ -50,14 +53,17 @@ void	inscribe_s_var(va_list *aprtf, t_info *list)
 	return ;
 }
 
-void	inscribe_S_var(va_list *aprtf, t_info *list)
+void	inscribe_S_var(va_list *aprtf, t_info *list, t_flags *flag)
 {
 	wchar_t		*cur_arg;
 	int 		i;
 	int 		y;
 
 	cur_arg = va_arg(*aprtf, wchar_t*);
-	i = ft_strlen_wchart(cur_arg);
+	if (flag->precision && flag->precision <= (int)ft_strlen_wchart(cur_arg))
+		i = flag->precision;
+	else
+		i = ft_strlen_wchart(cur_arg);
 	y = 0;
 	list->converted_string = ft_realloc(list->converted_string, 
 				ft_strlen(list->converted_string) + i);

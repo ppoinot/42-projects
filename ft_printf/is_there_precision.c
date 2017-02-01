@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_checkflag.c                              :+:      :+:    :+:   */
+/*   is_there_precision.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,14 +12,25 @@
 
 #include "ft_printf.h"
 
-char	*ft_printf_checkflag(char *str, t_flags *flag)
+char	*is_there_precision(char *str, t_flags *flag)
 {
-	while (is_a_good_flag(str) && (flag->conv_spe == 0))
+	char	*pre_string;
+	int 	i;
+
+	pre_string = ft_strnew(1);
+	i = 0;
+	while (ft_isdigit((int)*str))
+		str++;
+	if (*str == '.')
 	{
-		if (is_a_conversion_specifier(*str))
-			str = get_conversion_specifier(flag, str);
-		else if (is_a_lenth_modifier(*str))
-			str = get_lenth_modifier(flag, str);
+		str++;
+		while (*str && ft_isdigit((int)*str))
+		{
+			pre_string = ft_realloc(pre_string, ft_strlen(pre_string) + 1);
+			pre_string[i++] = *str++;
+		}
+		flag->precision = ft_atoi(pre_string);
 	}
+	ft_strdel(&pre_string);
 	return (str);
 }
