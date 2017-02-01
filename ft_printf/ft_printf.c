@@ -38,7 +38,7 @@ int		ft_printf(char *format, ...)
 
 	if (!format || *format == 0)
 	{
-		ft_putendl("First parameter is NULL. Please don't do this.");
+		ft_putendl("ft_printf : First parameter is NULL.");
 		return (-1);
 	}
 	format_cpy = ft_strdup(format);
