@@ -12,7 +12,18 @@
 
 #include "ft_printf.h"
 
-void	inscribe_o_var(va_list *aprtf, t_info *list)
+static char	*precision(t_flags *flag, int x)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = ft_strnew(flag->precision - x);
+	str = ft_memset(str, 48, flag->precision - x);
+	return (str);
+}
+
+void		inscribe_o_var(va_list *aprtf, t_info *list, t_flags *flag)
 {
 	unsigned int		cur_arg;
 	int 				x;
@@ -29,14 +40,12 @@ void	inscribe_o_var(va_list *aprtf, t_info *list)
 	z = z / 1;
 	octal = x * 100 + y * 10 + z * 1;
 	cur_arg_string = ft_itoa(octal);
-	x = ft_strlen(cur_arg_string);
+	if ((x = ft_strlen(cur_arg_string)) <= flag->precision)
+		cur_arg_string = ft_strjoin(precision(flag, x), cur_arg_string);
 	y = 0;
 	list->converted_string = ft_realloc(list->converted_string, 
-				ft_strlen(list->converted_string) + x);
-	while (y < x)
-	{
-		list->converted_string[list->nb_c_written++] = cur_arg_string[y];
-		y++;
-	}
+				ft_strlen(list->converted_string) + ft_strlen(cur_arg_string));
+	while (y < (int)ft_strlen(cur_arg_string))
+		list->converted_string[list->nb_c_written++] = cur_arg_string[y++];
 	return ;
 }
