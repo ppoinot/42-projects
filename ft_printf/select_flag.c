@@ -34,7 +34,9 @@ void	select_di_ouxX_eE_fF_gG_aA(t_flags *flag, va_list *aprtf, t_info *list)
 {
 	if (flag->conv_spe == 'd' || flag->conv_spe == 'i')
 		inscribe_di_var(aprtf, list);
-	else if (flag->conv_spe == 'o' || flag->conv_spe == 'u'
-		|| flag->conv_spe == 'x' || flag->conv_spe == 'X')
-		return ;
+	else if (flag->conv_spe == 'o')
+		inscribe_o_var(aprtf, list);
+	else if (flag->conv_spe == 'u' || flag->conv_spe == 'x' 
+		|| flag->conv_spe == 'X')
+	return ;
 }
