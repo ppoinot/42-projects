@@ -12,12 +12,16 @@
 
 #include "ft_printf.h"
 
-void	select_c_s_or_hash(t_flags *flag, va_list *aprtf, t_info *list)
+void	select_cC_sS_or_hash(t_flags *flag, va_list *aprtf, t_info *list)
 {
 	if (flag->conv_spe == 'c')
 		inscribe_c_var(aprtf, list);
+	else if (flag->conv_spe == 'C')
+		inscribe_C_var(aprtf, list);
 	else if (flag->conv_spe == 's')
 		inscribe_s_var(aprtf, list);
+	else if (flag->conv_spe == 'S')
+		inscribe_S_var(aprtf, list);
 	else
 	{
 		list->converted_string = ft_realloc(list->converted_string,

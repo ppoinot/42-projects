@@ -17,7 +17,7 @@ void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list)
 	if (is_a_conversion_specifier(flag->conv_spe))
 	{
 		if (is_an_alphabetic_flag(flag->conv_spe))
-			select_c_s_or_hash(flag, aprtf, list);
+			select_cC_sS_or_hash(flag, aprtf, list);
 		else
 			select_di_ouxX_eE_fF_gG_aA(flag, aprtf, list);
 	}

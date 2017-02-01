@@ -15,6 +15,7 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
+# include <wchar.h>
 
 typedef struct		s_info
 {
@@ -47,10 +48,12 @@ char	*ft_printf_checkflag(char *str, t_flags *flag);
 void	print_final(t_flags *flag, va_list *aprtf, t_list *list);
 
 void	inscribe_c_var(va_list *aprtf, t_info *list);
+void	inscribe_C_var(va_list *aprtf, t_info *list);
 void	inscribe_s_var(va_list *aprtf, t_info *list);
+void	inscribe_S_var(va_list *aprtf, t_info *list);
 void	inscribe_di_var(va_list *aprtf, t_info *list);
 
-void	select_c_s_or_hash(t_flags *flag, va_list *aprtf, t_info *list);
+void	select_cC_sS_or_hash(t_flags *flag, va_list *aprtf, t_info *list);
 void	select_di_ouxX_eE_fF_gG_aA(t_flags *flag, va_list *aprtf, t_info *list);
 
 void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list);

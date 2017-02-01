@@ -23,6 +23,17 @@ void	inscribe_c_var(va_list *aprtf, t_info *list)
 	return ;
 }
 
+void	inscribe_C_var(va_list *aprtf, t_info *list)
+{
+	int		cur_arg;
+
+	cur_arg = va_arg(*aprtf, wchar_t);
+	list->converted_string = ft_realloc(list->converted_string,
+			ft_strlen(list->converted_string) + 1);
+	list->converted_string[list->nb_c_written++] = cur_arg;
+	return ;
+}
+
 void	inscribe_s_var(va_list *aprtf, t_info *list)
 {
 	char	*cur_arg;
@@ -35,10 +46,23 @@ void	inscribe_s_var(va_list *aprtf, t_info *list)
 	list->converted_string = ft_realloc(list->converted_string, 
 				ft_strlen(list->converted_string) + i);
 	while (y < i)
-	{
-		list->converted_string[list->nb_c_written++] = cur_arg[y];
-		y++;
-	}
+		list->converted_string[list->nb_c_written++] = cur_arg[y++];
+	return ;
+}
+
+void	inscribe_S_var(va_list *aprtf, t_info *list)
+{
+	wchar_t		*cur_arg;
+	int 		i;
+	int 		y;
+
+	cur_arg = va_arg(*aprtf, wchar_t*);
+	i = ft_strlen_wchart(cur_arg);
+	y = 0;
+	list->converted_string = ft_realloc(list->converted_string, 
+				ft_strlen(list->converted_string) + i);
+	while (y < i)
+		list->converted_string[list->nb_c_written++] = (char)cur_arg[y++];
 	return ;
 }
 
