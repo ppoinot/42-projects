@@ -28,6 +28,7 @@ void				ft_memdel(void **ap);
 void				*ft_realloc(void *ptr, size_t size);
 
 size_t				ft_strlen(const char *s);
+size_t				ft_strlen_wchart(const wchar_t *s);
 char				*ft_strdup(const char *s1);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t n);
