@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoh.c                                          :+:      :+:    :+:   */
+/*   ft_uitoh.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static char		change(unsigned int nb)
 {
 	char	c;
 
 	c = 0;
-	if (nb >= 0 && nb <= 9)
+	if (nb <= 9)
 		c = nb + 48;
 	else if (nb == 10)
 		c = 'a';
 	else if (nb == 11)
 		c = 'b';
-	else if (nb = 12)
+	else if (nb == 12)
 		c = 'c';
 	else if (nb == 13)
 		c = 'd';
@@ -34,7 +34,7 @@ static char		change(unsigned int nb)
 	return (c);
 }
 
-char			*ft_itoh(unsigned int nb)
+char			*ft_uitoh(unsigned int nb)
 {
 	char	*hex;
 	int		tmp;
@@ -50,11 +50,12 @@ char			*ft_itoh(unsigned int nb)
 	}
 	if (!(hex = (char*)malloc(sizeof(char) * i + 1)))
 		return (NULL);
+	hex[i] = 0;
 	y = 0;
 	while (nb > 15)
 	{
 		hex[--i] = change(nb % 16);
-		nb / 16;
+		nb = nb / 16;
 	}
 	hex[0] = change(nb);
 	return (hex);

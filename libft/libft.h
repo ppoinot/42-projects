@@ -45,6 +45,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(char *nptr);
 char				*ft_itoa(int n);
 char				*ft_uitoa(unsigned int n);
+char				*ft_uitoh(unsigned int nb);
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
