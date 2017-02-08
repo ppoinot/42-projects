@@ -56,6 +56,7 @@ void	inscribe_s_var(va_list *aprtf, t_info *list, t_flags *flag);
 void	inscribe_S_var(va_list *aprtf, t_info *list, t_flags *flag);
 void	inscribe_di_var(va_list *aprtf, t_info *list);
 void	inscribe_o_var(va_list *aprtf, t_info *list, t_flags *flag);
+void	inscribe_u_var(va_list *aprtf, t_info *list);
 
 void	select_cC_sS_or_hash(t_flags *flag, va_list *aprtf, t_info *list);
 void	select_di_ouxX_eE_fF_gG_aA(t_flags *flag, va_list *aprtf, t_info *list);

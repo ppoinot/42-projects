@@ -49,3 +49,21 @@ void		inscribe_o_var(va_list *aprtf, t_info *list, t_flags *flag)
 		list->converted_string[list->nb_c_written++] = cur_arg_string[y++];
 	return ;
 }
+
+void	inscribe_u_var(va_list *aprtf, t_info *list)
+{
+	unsigned int		cur_arg_int;
+	char				*cur_arg_string;
+	int 				i;
+	int 				y;
+
+	cur_arg_int = va_arg(*aprtf, int);
+	cur_arg_string = ft_uitoa(cur_arg_int);
+	i = ft_strlen(cur_arg_string);
+	y = 0;
+	list->converted_string = ft_realloc(list->converted_string, 
+				ft_strlen(list->converted_string) + i);
+	while (y < i)
+		list->converted_string[list->nb_c_written++] = cur_arg_string[y++];
+	return ;
+}
