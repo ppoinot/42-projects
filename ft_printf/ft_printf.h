@@ -29,7 +29,7 @@ typedef struct		s_info
 typedef struct 		s_flags
 {
 	char			conv_spe;
-	char			lenth;
+	char			lenth_mod[2];
 	int 			precision;
 	
 }					t_flags;

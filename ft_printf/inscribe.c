@@ -34,6 +34,7 @@ char	*flag_found(char *str, va_list *aprtf, t_info *list)
 	if (flag->conv_spe)
 		inscribe_final(flag, aprtf, list);
 	free(flag);
+	flag = NULL;
 	return (str);
 }
 

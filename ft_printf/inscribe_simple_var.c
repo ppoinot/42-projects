@@ -50,6 +50,7 @@ void	inscribe_s_var(va_list *aprtf, t_info *list, t_flags *flag)
 				ft_strlen(list->converted_string) + i);
 	while (y < i)
 		list->converted_string[list->nb_c_written++] = cur_arg[y++];
+	ft_strdel(&cur_arg);
 	return ;
 }
 
@@ -69,6 +70,7 @@ void	inscribe_S_var(va_list *aprtf, t_info *list, t_flags *flag)
 				ft_strlen(list->converted_string) + i);
 	while (y < i)
 		list->converted_string[list->nb_c_written++] = (char)cur_arg[y++];
+	ft_strdel((char**)&cur_arg);
 	return ;
 }
 
@@ -90,5 +92,6 @@ void	inscribe_di_var(va_list *aprtf, t_info *list)
 		list->converted_string[list->nb_c_written++] = cur_arg_string[y];
 		y++;
 	}
+	ft_strdel(&cur_arg_string);
 	return ;
 }

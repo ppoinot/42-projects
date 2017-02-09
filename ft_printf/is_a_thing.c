@@ -34,7 +34,7 @@ int 	is_a_conversion_specifier(char c)
 
 int 	is_a_lenth_modifier(char c)
 {
-	if(c == 'h' || c == 'l' || c == 'L' || c == 'j' || c == 'z' || c == 't')
+	if(c == 'h' || c == 'l' || c == 'L' || c == 'j' || c == 'z')
 		return (1);
 	else
 		return (0);

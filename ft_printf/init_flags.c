@@ -19,7 +19,8 @@ t_flags		*init_flags(void)
 	if (!(current_flag = (t_flags*)malloc(sizeof(t_flags))))
 		return(NULL);
 	current_flag->conv_spe = 0;
-	current_flag->lenth = 0;
+	current_flag->lenth_mod[0] = 0;
+	current_flag->lenth_mod[1] = 0;
 	current_flag->precision = 0;
 	return (current_flag);
 }

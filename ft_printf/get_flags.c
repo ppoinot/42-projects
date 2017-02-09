@@ -14,7 +14,23 @@
 
 char	*get_lenth_modifier(t_flags *flag, char *str)
 {
-	flag->lenth = *str;
+	flag->lenth_mod[0] = *str;
+	if (*str == 'h')
+	{
+		if (*(str + 1) == 'h')
+		{
+			flag->lenth_mod[1] = *(str + 1);
+			return (str + 2);
+		}
+	}
+	else if (*str == 'l')
+	{
+		if (*(str + 1) == 'l')
+		{
+			flag->lenth_mod[1] = *(str + 1);
+			return (str + 2);
+		}
+	}
 	return (str++);
 }
 
