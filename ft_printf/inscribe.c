@@ -14,6 +14,8 @@
 
 void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list)
 {
+	if (flag->attribute)
+		add_attribute_hash_to_format(flag, list);
 	if (is_a_conversion_specifier(flag->conv_spe))
 	{
 		if (is_an_alphabetic_flag(flag->conv_spe))
@@ -29,6 +31,8 @@ char	*flag_found(char *str, va_list *aprtf, t_info *list)
 	t_flags		*flag;
 
 	flag = init_flags();
+	str = is_there_an_attribute(str, flag);
+	str = is_there_wof(str, flag);
 	str = is_there_precision(str, flag);
 	str = ft_printf_checkflag(str, flag);
 	if (flag->conv_spe)

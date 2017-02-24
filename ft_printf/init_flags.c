@@ -22,5 +22,7 @@ t_flags		*init_flags(void)
 	current_flag->lenth_mod[0] = 0;
 	current_flag->lenth_mod[1] = 0;
 	current_flag->precision = 0;
+	current_flag->attribute = 0;
+	current_flag->wof = 0;
 	return (current_flag);
 }

@@ -12,6 +12,14 @@
 
 #include "ft_printf.h"
 
+int 	is_an_attribute(char c)
+{
+	if (c == '#' || c == '0' || c == '-' || c == '+')
+		return (1);
+	else
+		return (0);	
+}
+
 int 	is_an_alphabetic_flag(char c)
 {
 	if (c == 'c' || c == 'C' || c == 's' || c == 'S' || c == '%')
@@ -43,7 +51,7 @@ int 	is_a_lenth_modifier(char c)
 int		is_a_good_flag(char *str)
 {
 	if (is_a_conversion_specifier(*str) || is_a_lenth_modifier(*str)
-		|| ft_isdigit(*str))
+		|| ft_isdigit(*str) || is_an_attribute(*str))
 		return (1);
 	else 
 		return (0);
