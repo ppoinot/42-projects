@@ -33,6 +33,7 @@ typedef struct 		s_flags
 	char			attribute;
 	int 			precision;
 	int 			wof;
+	char			wof_c;
 	
 }					t_flags;
 

@@ -14,8 +14,10 @@
 
 void	inscribe_final(t_flags *flag, va_list *aprtf, t_info *list)
 {
-	if (flag->attribute)
+	if (flag->attribute == '#')
 		add_attribute_hash_to_format(flag, list);
+	else if (flag->attribute == '0')
+		flag->wof_c = '0';
 	if (is_a_conversion_specifier(flag->conv_spe))
 	{
 		if (is_an_alphabetic_flag(flag->conv_spe))
