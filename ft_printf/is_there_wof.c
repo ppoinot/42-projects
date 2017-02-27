@@ -12,6 +12,26 @@
 
 #include "ft_printf.h"
 
+char	*add_wof_to_cur_arg_string(char *old_arg, t_flags *flag)
+{
+	int		len;
+	int		between;
+	char	*tmp;
+	char	*new_arg;
+
+	len = ft_strlen(old_arg);
+	if (len < flag->wof)
+	{
+		between = flag->wof - len;
+		tmp = ft_memset(ft_strnew(between), (int)flag->wof_c, between);
+		new_arg = ft_strjoin(tmp, old_arg);
+		ft_strdel(&tmp);
+		ft_strdel(&old_arg);
+		return(new_arg);
+	}
+	return (old_arg);
+}
+
 char	*is_there_wof(char *str, t_flags *flag)
 {
 	char	*wof;
@@ -27,6 +47,5 @@ char	*is_there_wof(char *str, t_flags *flag)
 	}
 	flag->wof = ft_atoi(wof);
 	ft_strdel(&wof);
-	printf("width_of_field = %d\n", flag->wof);
 	return (str);
 }

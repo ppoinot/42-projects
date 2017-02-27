@@ -38,9 +38,11 @@ typedef struct 		s_flags
 }					t_flags;
 
 char	*is_there_precision(char *str, t_flags *flag);
+char	*printf_precision(t_flags *flag, int x);
 char	*is_there_an_attribute(char *str, t_flags *flag);
 void	add_attribute_hash_to_format(t_flags *flag, t_info *list);
 char	*is_there_wof(char *str, t_flags *flag);
+char	*add_wof_to_cur_arg_string(char *old_arg, t_flags *flag);
 
 int 	is_an_alphabetic_flag(char c);
 int		is_a_conversion_specifier(char c);
@@ -61,7 +63,7 @@ void	inscribe_c_var(va_list *aprtf, t_info *list);
 void	inscribe_C_var(va_list *aprtf, t_info *list);
 void	inscribe_s_var(va_list *aprtf, t_info *list, t_flags *flag);
 void	inscribe_S_var(va_list *aprtf, t_info *list, t_flags *flag);
-void	inscribe_di_var(va_list *aprtf, t_info *list);
+void	inscribe_di_var(va_list *aprtf, t_info *list, t_flags *flag);
 void	inscribe_o_var(va_list *aprtf, t_info *list, t_flags *flag);
 void	inscribe_u_var(va_list *aprtf, t_info *list, t_flags *flag);
 void	inscribe_x_var(va_list *aprtf, t_info *list, t_flags *flag);
