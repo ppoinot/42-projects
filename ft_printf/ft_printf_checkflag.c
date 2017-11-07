@@ -20,6 +20,8 @@ char	*ft_printf_checkflag(char *str, t_flags *flag)
 			str = get_conversion_specifier(flag, str);
 		else if (is_a_lenth_modifier(*str))
 			str = get_lenth_modifier(flag, str);
+		else
+			str++;
 	}
 	return (str);
 }

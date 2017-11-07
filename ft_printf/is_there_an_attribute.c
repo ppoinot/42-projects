@@ -20,7 +20,7 @@ void	add_attribute_hash_to_format(t_flags *flag, t_info *list)
 			ft_strlen(list->converted_string) + 1);
 			list->converted_string[list->nb_c_written++] = '0';
 		}
-		else if (flag->conv_spe == 'x' || flag->conv_spe == 'X')
+	else if (flag->conv_spe == 'x' || flag->conv_spe == 'X')
 		{
 			list->converted_string = ft_realloc(list->converted_string,
 			ft_strlen(list->converted_string) + 2);

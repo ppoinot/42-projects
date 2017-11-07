@@ -63,3 +63,7 @@ int		inscribe(char *string, va_list *aprtf, t_info *list)
 	list->converted_string[list->nb_c_written] = '\0';
 	return (list->nb_c_written);
 }
+/*  ************************  */
+/*  wof means width of field  */
+/*  and hash means # (hastag) */
+/*  ************************  */
