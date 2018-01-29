@@ -87,7 +87,8 @@ SRC = ft_atoi.c \
 	  ft_nbocc.c \
 	  ft_realloc.c \
 	  ft_print_whitespace.c \
-	  ft_count.c
+	  ft_count.c \
+	  ft_sqrt.c
 
 all : $(NAME)
 

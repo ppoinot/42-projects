@@ -5,45 +5,45 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ppoinot <ppoinot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/01/20 11:25:54 by ppoinot           #+#    #+#              #
-#    Updated: 2016/01/20 15:38:13 by ppoinot          ###   ########.fr        #
+#    Created: 2015/12/10 04:57:12 by ppoinot           #+#    #+#              #
+#    Updated: 2016/11/12 13:56:53 by ppoinot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+NAME = ft_printf.a
 CC = gcc
 rm = rm -f
 CFLAGS = -Wall -Werror -Wextra
-INCLUDES = ./
-SUBDIR = ./libft
-LIBFT = -L libft -lft
+INCLUDES = ./libft.h
 OBJ = $(SRC:.c=.o)
-SRC = init.c \
-	  struct.c \
-	  backtracking.c \
-	  bridge.c \
-	  check.c \
-	  solve.c
+SRC = ft_printf.c \
+	  ft_printf_checkflag.c \
+	  get_flags.c \
+	  init_flags.c \
+	  inscribe.c \
+	  inscribe_medium_var.c \
+	  inscribe_simple_var.c \
+	  is_a_thing.c \
+	  is_there_precision.c \
+	  is_there_an_attribute.c \
+	  is_there_wof.c \
+	  select_flag.c
 
-all : subsystem $(NAME)
-
-subsystem :
-	make -C ./libft
+all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(LIBFT) -o $(NAME) $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -I $(INCLUDES) $(SRC)
+	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCLUDES)
 
 clean:
 	$(RM) $(OBJ)
-	cd $(SUBDIR) && make clean
 
 fclean: clean
 	$(RM) $(NAME)
-	cd $(SUBDIR) && make fclean
 
 re: fclean all
 
-.PHONY: re fclean clean subsystem all
+.PHONY: re fclean clean all

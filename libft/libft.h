@@ -55,6 +55,7 @@ int					ft_isprint(int c);
 int					ft_isspace(int c);
 int					ft_nbocc(char *chaine, char c);
 int					ft_count(char *str, char c);
+int					ft_sqrt(int nb);
 
 int					ft_toupper(int c);
 int					ft_tolower(int c);
