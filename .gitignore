@@ -17,6 +17,7 @@ get_next_line/libft
 moulitest
 piscine_reloaded
 corrections
+ancient_ft_printf
 
 # ignorer tous les fichiers dans le répertoire build
 # build/
